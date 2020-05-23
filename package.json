@@ -1,0 +1,15 @@
+{
+  "name": "emu",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  },
+  "version": "0.1.0",
+  "description": "Emulation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gareththegeek",
+  "license": "ISC"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "gemu-persistance",
+  "version": "0.1.0",
+  "description": "Persistance interfaces",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "gareththegeek",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.9.3"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "gemu-store",
+  "version": "0.1.0",
+  "description": "Store implementation for emulation project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "gareththegeek",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "@types/mocha": "^7.0.2",
+    "@types/sinon": "^9.0.4",
+    "@types/sinon-chai": "^3.2.4",
+    "jest": "^26.0.1",
+    "mocha": "^7.2.0",
+    "sinon": "^9.0.2",
+    "sinon-chai": "^3.5.0",
+    "ts-jest": "^26.0.0",
+    "typescript": "^3.9.3"
+  }
+}

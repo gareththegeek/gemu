@@ -1,4 +1,4 @@
-import Bus from '../../infrastructure/Bus'
+import Bus from 'gemu-interfaces/dist/Bus'
 import Instruction from '../Instruction'
 import { getInstructionTable } from './instructionTable'
 

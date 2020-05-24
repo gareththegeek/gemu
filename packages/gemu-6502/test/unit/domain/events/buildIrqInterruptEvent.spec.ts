@@ -4,7 +4,7 @@ import * as sinonChai from 'sinon-chai'
 import * as buildInterruptEventUnit from '../../../../src/domain/events/buildInterruptEvent'
 import { buildIrqInterruptEvent } from '../../../../src/domain/events/buildIrqInterruptEvent'
 import { build6502State } from '../../../helpers/factories'
-import Bus from '../../../../src/infrastructure/Bus'
+import Bus from 'gemu-interfaces/dist/Bus'
 import { IRQ_VECTOR, B_IRQ } from '../../../../src/domain/constants'
 const expect = chai.expect
 chai.use(sinonChai)

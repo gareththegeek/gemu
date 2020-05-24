@@ -14,7 +14,7 @@
     "@types/lodash": "^4.14.152",
     "@types/sinon": "^9.0.4",
     "@types/sinon-chai": "^3.2.4",
-    "gemu-persistance": "^0.1.1",
+    "gemu-interfaces": "^0.1.1",
     "jest": "^26.0.1",
     "mocha": "^7.2.0",
     "sinon": "^9.0.2",

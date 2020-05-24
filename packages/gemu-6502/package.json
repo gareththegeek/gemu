@@ -4,8 +4,7 @@
   "description": "6502 CPU Emulation",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test": "jest"
   },
   "author": "gareththegeek",
   "license": "ISC",
@@ -17,7 +16,7 @@
     "@types/sinon-chai": "^3.2.4",
     "chai": "^4.2.0",
     "chai-subset": "^1.6.0",
-    "gemu-persistance": "^0.1.1",
+    "gemu-interfaces": "^0.1.1",
     "jest": "^26.0.1",
     "sinon": "^9.0.2",
     "sinon-chai": "^3.5.0",

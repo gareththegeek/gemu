@@ -1,6 +1,6 @@
-import Event from 'gemu-persistance/dist/Event'
+import Event from 'gemu-interfaces/dist/Event'
 import Operation from '../../src/domain/Operation'
-import Bus from '../../src/infrastructure/Bus'
+import Bus from 'gemu-interfaces/dist/Bus'
 import { build6502State } from './factories'
 import State from '../../src/domain/State'
 

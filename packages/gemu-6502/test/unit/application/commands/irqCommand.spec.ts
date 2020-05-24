@@ -3,7 +3,8 @@ import * as chai from 'chai'
 import * as sinonChai from 'sinon-chai'
 import irqCommand from '../../../../src/application/commands/irqCommand'
 import * as buildIrqEventUnit from '../../../../src/domain/events/buildIrqEvent'
-import Store from '../../../../src/persistance/Store'
+import Store from 'gemu-interfaces/dist/Store'
+import State from '../../../../src/domain/State'
 import { build6502State } from '../../../helpers/factories'
 const expect = chai.expect
 chai.use(sinonChai)
@@ -30,7 +31,7 @@ describe('Unit', () => {
                 const store = {
                     read: sandbox.stub(),
                     write: sandbox.stub()
-                } as SinonStubbedInstance<Store>
+                } as SinonStubbedInstance<Store<State>>
 
                 const state = build6502State()
                 state.status.irqDisable = false
@@ -46,7 +47,7 @@ describe('Unit', () => {
                 const store = {
                     read: sandbox.stub(),
                     write: sandbox.stub()
-                } as SinonStubbedInstance<Store>
+                } as SinonStubbedInstance<Store<State>>
 
                 const state = build6502State()
                 state.status.irqDisable = true

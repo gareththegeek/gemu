@@ -1,6 +1,6 @@
-import Event from 'gemu-persistance/dist/Event'
+import Event from 'gemu-interfaces/dist/Event'
 import State from '../State'
-import Bus from '../../infrastructure/Bus'
+import Bus from 'gemu-interfaces/dist/Bus'
 
 const jmp = (_: State, __: Bus, parameter: number): Event<State> => ({
     pc: parameter

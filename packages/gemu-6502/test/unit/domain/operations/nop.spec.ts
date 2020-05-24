@@ -1,6 +1,6 @@
 import nop from '../../../../src/domain/operations/nop'
 import { build6502State } from '../../../helpers/factories'
-import Bus from '../../../../src/infrastructure/Bus'
+import Bus from 'gemu-interfaces/dist/Bus'
 import { expect } from 'chai'
 
 describe('Unit', () => {

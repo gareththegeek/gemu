@@ -1,4 +1,4 @@
-import Bus from '../../infrastructure/Bus'
+import Bus from 'gemu-interfaces/dist/Bus'
 import DataRegisters from '../DataRegisters'
 
 const zeroPageIndexedY = (bus: Bus, operand: number[], registers: DataRegisters): number =>

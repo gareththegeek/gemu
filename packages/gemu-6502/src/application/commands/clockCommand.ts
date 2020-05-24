@@ -1,5 +1,6 @@
-import Bus from '../../infrastructure/Bus'
-import Store from '../../persistance/Store'
+import Bus from 'gemu-interfaces/dist/Bus'
+import Store from 'gemu-interfaces/dist/Store'
+import State from '../../domain/State'
 import Command from '../Command'
 import { buildInitialiseEvent } from '../../domain/events/buildInitialiseEvent'
 import { buildWaitCycleEvent } from '../../domain/events/buildWaitCycleEvent'
@@ -7,7 +8,7 @@ import { buildNmiInterruptEvent } from '../../domain/events/buildNmiInterruptEve
 import { buildIrqInterruptEvent } from '../../domain/events/buildIrqInterruptEvent'
 import { buildOperationEvent } from '../../domain/events/buildOperationEvent'
 
-const clockCommand = (bus: Bus, store: Store): Command =>
+const clockCommand = (bus: Bus, store: Store<State>): Command =>
     () => {
         const state = store.read()
 

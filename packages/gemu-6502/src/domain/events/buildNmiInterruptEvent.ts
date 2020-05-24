@@ -1,6 +1,6 @@
 import State from '../State'
-import Event from 'gemu-persistance/dist/Event'
-import Bus from '../../infrastructure/Bus'
+import Event from 'gemu-interfaces/dist/Event'
+import Bus from 'gemu-interfaces/dist/Bus'
 import { buildInterruptEvent } from './buildInterruptEvent'
 import { B_NMI, NMI_VECTOR } from '../constants'
 

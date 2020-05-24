@@ -1,5 +1,5 @@
-import Event from 'gemu-persistance/dist/Event'
-import Bus from '../../infrastructure/Bus'
+import Event from 'gemu-interfaces/dist/Event'
+import Bus from 'gemu-interfaces/dist/Bus'
 import State from '../State'
 import toByte from '../bitwise/toByte'
 import isNegative from '../bitwise/isNegative'

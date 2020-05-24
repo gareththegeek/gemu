@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 import { buildInitialiseEvent } from '../../../../src/domain/events/buildInitialiseEvent'
 import sinon = require('sinon')
-import Bus from '../../../../src/infrastructure/Bus'
+import Bus from 'gemu-interfaces/dist/Bus'
 
 describe('Unit', () => {
     describe('6502', () => {

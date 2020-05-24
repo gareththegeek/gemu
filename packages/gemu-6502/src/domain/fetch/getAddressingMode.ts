@@ -1,4 +1,4 @@
-import Bus from '../../infrastructure/Bus'
+import Bus from 'gemu-interfaces/dist/Bus'
 import DataRegisters from '../DataRegisters'
 import { getAddressingModeTable } from '../addressingModes/addressingModeTable'
 

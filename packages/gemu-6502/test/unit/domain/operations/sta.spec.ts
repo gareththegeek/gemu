@@ -2,7 +2,7 @@ import * as chai from 'chai'
 import * as sinonChai from 'sinon-chai'
 import sinon = require('sinon')
 import sta from '../../../../src/domain/operations/sta'
-import Bus from '../../../../src/infrastructure/Bus'
+import Bus from 'gemu-interfaces/dist/Bus'
 import { testOperation } from '../../../helpers/6502'
 chai.use(sinonChai)
 const expect = chai.expect

@@ -2,13 +2,14 @@
   "name": "gemu",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "jest": "^26.0.1",
+    "lerna": "^3.21.0"
   },
   "version": "0.1.0",
   "description": "Emulation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "gareththegeek",
   "license": "ISC"

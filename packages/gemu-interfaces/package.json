@@ -1,7 +1,7 @@
 {
-  "name": "gemu-persistance",
+  "name": "gemu-interfaces",
   "version": "0.1.1",
-  "description": "Persistance interfaces",
+  "description": "Common interfaces for gemu emulation project",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"

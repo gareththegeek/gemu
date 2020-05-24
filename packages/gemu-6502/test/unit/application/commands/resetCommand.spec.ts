@@ -3,7 +3,8 @@ import * as chai from 'chai'
 import * as sinonChai from 'sinon-chai'
 import resetCommand from '../../../../src/application/commands/resetCommand'
 import * as buildResetEventUnit from '../../../../src/domain/events/buildResetEvent'
-import Store from '../../../../src/persistance/Store'
+import Store from 'gemu-interfaces/dist/Store'
+import State from '../../../../src/domain/State'
 const expect = chai.expect
 chai.use(sinonChai)
 
@@ -29,7 +30,7 @@ describe('Unit', () => {
                 const store = {
                     read: sandbox.stub(),
                     write: sandbox.stub()
-                } as SinonStubbedInstance<Store>
+                } as SinonStubbedInstance<Store<State>>
 
                 const uut = resetCommand(store)
                 uut()

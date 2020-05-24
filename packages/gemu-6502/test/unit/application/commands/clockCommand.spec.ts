@@ -7,9 +7,10 @@ import * as buildInitialiseEventUnit from '../../../../src/domain/events/buildIn
 import * as buildNmiInterruptEventUnit from '../../../../src/domain/events/buildNmiInterruptEvent'
 import * as buildIrqInterruptEventUnit from '../../../../src/domain/events/buildIrqInterruptEvent'
 import * as buildOperationEventUnit from '../../../../src/domain/events/buildOperationEvent'
-import Store from '../../../../src/persistance/Store'
+import Store from 'gemu-interfaces/dist/Store'
+import Bus from 'gemu-interfaces/dist/Bus'
+import State from '../../../../src/domain/State'
 import { build6502State } from '../../../helpers/factories'
-import Bus from '../../../../src/infrastructure/Bus'
 const expect = chai.expect
 chai.use(sinonChai)
 
@@ -19,7 +20,7 @@ describe('Unit', () => {
             let sandbox: SinonSandbox
 
             let bus: SinonStubbedInstance<Bus>
-            let store: SinonStubbedInstance<Store>
+            let store: SinonStubbedInstance<Store<State>>
 
             let buildWaitCycleEvent: SinonStub
             let buildInitialiseEvent: SinonStub

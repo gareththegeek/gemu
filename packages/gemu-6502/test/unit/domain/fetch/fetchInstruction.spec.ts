@@ -3,7 +3,7 @@ import sinon = require('sinon')
 import * as chai from 'chai'
 import * as sinonChai from 'sinon-chai'
 import buildInstruction from '../../../../src/domain/fetch/buildInstruction'
-import Bus from '../../../../src/infrastructure/Bus'
+import Bus from 'gemu-interfaces/dist/Bus'
 import * as instructionTableUnit from '../../../../src/domain/fetch/instructionTable'
 chai.use(sinonChai)
 const expect = chai.expect

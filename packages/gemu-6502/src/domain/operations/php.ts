@@ -8,7 +8,7 @@ import { B_PHP } from '../constants'
 
 const php = (state: State, bus: Bus, _: number): Event<State> => {
     const value = getStatusByte(state.status) | B_PHP
-    bus.write(getStackAddress(state.sp), value)
+    bus.writeCommand(getStackAddress(state.sp), value)
     return {
         sp: toByte(state.sp - 1)
     }

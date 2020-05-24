@@ -3,6 +3,6 @@ import DataRegisters from '../DataRegisters'
 import littleEndian from '../bitwise/littleEndian'
 
 const absolute = (bus: Bus, operand: number[], _: DataRegisters): number =>
-    bus.read(littleEndian(operand))
+    bus.readQuery(littleEndian(operand))
 
 export default absolute

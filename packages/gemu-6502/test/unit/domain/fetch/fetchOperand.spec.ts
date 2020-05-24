@@ -14,8 +14,8 @@ describe('Unit', () => {
                 const size = 4
                 const expected = [7, 8, 9, 10]
                 const bus = {
-                    write: sinon.stub(),
-                    read: (a: number): number => expected[a - address]
+                    writeCommand: sinon.stub(),
+                    readQuery: (a: number): number => expected[a - address]
                 } as Bus
 
                 const uut = fetchOperand

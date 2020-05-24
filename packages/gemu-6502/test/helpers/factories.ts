@@ -8,7 +8,10 @@
 // import rangeFactory from '../../src/rangedcomponent/factory'
 // import IRangedComponent from '../../src/rangedcomponent/irangedcomponent'
 
-import State from "../../src/domain/State";
+import State from '../../src/domain/State'
+import { SinonStubbedInstance } from 'sinon'
+import Bus from 'gemu-interfaces/dist/Bus'
+import sinon = require('sinon')
 
 export const build6502State = (): State => ({
     pc: 1,
@@ -28,6 +31,11 @@ export const build6502State = (): State => ({
     },
     initialised: true,
     cycles: 7
+})
+
+export const buildBus = (): SinonStubbedInstance<Bus> => ({
+    readQuery: sinon.stub(),
+    writeCommand: sinon.stub()
 })
 
 // export interface I6502System {

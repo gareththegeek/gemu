@@ -6,9 +6,9 @@ import isZero from '../bitwise/isZero'
 import isNegative from '../bitwise/isNegative'
 
 const inc = (_: State, bus: Bus, parameter: number): Event<State> => {
-    const read = bus.read(parameter)
+    const read = bus.readQuery(parameter)
     const value = toByte(read + 1)
-    bus.write(parameter, value)
+    bus.writeCommand(parameter, value)
     return {
         status: {
             zero: isZero(value),

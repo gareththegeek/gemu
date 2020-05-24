@@ -1,8 +1,8 @@
-import Command from './Command'
-import Query from './Query'
+import Command from 'gemu-interfaces/src/Command'
+import Query from 'gemu-interfaces/src/Query'
 import State from '../domain/State'
-import Bus from '../infrastructure/Bus'
-import Store from '../persistance/Store'
+import Bus from 'gemu-interfaces/dist/Bus'
+import Store from 'gemu-interfaces/dist/Store'
 import stateQuery from './queries/stateQuery'
 import resetCommand from './commands/resetCommand'
 import clockCommand from './commands/clockCommand'
@@ -17,7 +17,7 @@ export default interface Cpu6502 {
     nmiCommand: Command
 }
 
-export const createCpu6502 = (bus: Bus, store: Store) => ({
+export const createCpu6502 = (bus: Bus, store: Store<State>) => ({
     stateQuery: stateQuery(store),
     resetCommand: resetCommand(store),
     clockCommand: clockCommand(bus, store),

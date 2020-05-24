@@ -4,6 +4,7 @@ import * as chai from 'chai'
 import * as chaiSubset from 'chai-subset'
 import * as sinon from 'sinon'
 import * as sinonChai from 'sinon-chai'
+import { buildBus } from '../../../helpers/factories'
 chai.use(chaiSubset)
 chai.use(sinonChai)
 const expect = chai.expect
@@ -58,16 +59,12 @@ describe('Unit', () => {
                 }
             ].forEach(item => {
                 it('should load data at stack pointer into status register and increment stack pointer', () => {
-                    const readStub = sinon.stub()
-                    const bus = {
-                        write: sinon.stub(),
-                        read: readStub
-                    }
-                    readStub.returns(item.status)
+                    const bus = buildBus()
+                    bus.readQuery.returns(item.status)
 
                     const actual = testOperation(plp, { sp: 0x87 }, {}, 0x00, bus)
 
-                    expect(readStub).to.have.been.calledWith(0x0188)
+                    expect(bus.readQuery).to.have.been.calledWith(0x0188)
                     expect(actual).to.containSubset({
                         sp: 0x88,
                         status: item.expectation

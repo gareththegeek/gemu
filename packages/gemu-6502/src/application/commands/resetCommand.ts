@@ -1,6 +1,6 @@
 import Store from 'gemu-interfaces/dist/Store'
 import State from '../../domain/State'
-import Command from '../Command'
+import Command from 'gemu-interfaces/src/Command'
 import { buildResetEvent } from '../../domain/events/buildResetEvent'
 
 const resetCommand = (store: Store<State>): Command =>

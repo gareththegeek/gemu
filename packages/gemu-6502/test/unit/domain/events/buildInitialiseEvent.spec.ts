@@ -8,8 +8,8 @@ describe('Unit', () => {
         describe('initialise', () => {
             it('should return an initialise state for the 6502 with correct number of initialisation cycles', () => {
                 const bus = {
-                    read: sinon.stub(),
-                    write: sinon.stub()
+                    readQuery: sinon.stub(),
+                    writeCommand: sinon.stub()
                 } as Bus
 
                 const uut = buildInitialiseEvent
@@ -32,7 +32,7 @@ describe('Unit', () => {
             it('should read the initial value for the pc from addresses 0xfffc and 0fffd on the bus', () => {
                 const expected = 0x1234
                 const bus = {
-                    read: (address: number): number => {
+                    readQuery: (address: number): number => {
                         switch (address) {
                             case 0xfffc:
                                 return 0x34
@@ -42,7 +42,7 @@ describe('Unit', () => {
                                 return 0x00
                         }
                     },
-                    write: sinon.stub()
+                    writeCommand: sinon.stub()
                 } as Bus
 
                 const uut = buildInitialiseEvent

@@ -1,7 +1,7 @@
 import Bus from 'gemu-interfaces/dist/Bus'
 import Store from 'gemu-interfaces/dist/Store'
 import State from '../../domain/State'
-import Command from '../Command'
+import Command from 'gemu-interfaces/src/Command'
 import { buildInitialiseEvent } from '../../domain/events/buildInitialiseEvent'
 import { buildWaitCycleEvent } from '../../domain/events/buildWaitCycleEvent'
 import { buildNmiInterruptEvent } from '../../domain/events/buildNmiInterruptEvent'

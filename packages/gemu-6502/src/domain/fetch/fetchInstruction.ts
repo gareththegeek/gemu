@@ -3,7 +3,7 @@ import Instruction from '../Instruction'
 import { getInstructionTable } from './instructionTable'
 
 const fetchInstruction = (bus: Bus, address: number): Instruction => {
-    const opcode = bus.read(address)
+    const opcode = bus.readQuery(address)
     const table = getInstructionTable()
 
     if (!(opcode in table)) {

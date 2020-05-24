@@ -8,8 +8,8 @@ import littleEndian from '../bitwise/littleEndian'
 import State from '../State'
 
 export const buildInitialiseEvent = (bus: Bus): Event<State> => {
-    const lo = bus.read(RESET_VECTOR + 0)
-    const hi = bus.read(RESET_VECTOR + 1)
+    const lo = bus.readQuery(RESET_VECTOR + 0)
+    const hi = bus.readQuery(RESET_VECTOR + 1)
     const pc = littleEndian([lo, hi])
     return {
         pc,

@@ -1,4 +1,4 @@
 export default interface Bus {
-    read: (address: number) => number
-    write: (address: number, value: number) => void
+    readQuery: (address: number) => number
+    writeCommand: (address: number, value: number) => void
 }

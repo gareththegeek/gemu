@@ -1,6 +1,6 @@
 import Store from 'gemu-interfaces/dist/Store'
 import State from '../../domain/State'
-import Command from '../Command'
+import Command from 'gemu-interfaces/src/Command'
 import { buildNmiEvent } from '../../domain/events/buildNmiEvent'
 
 const nmiCommand = (store: Store<State>): Command =>

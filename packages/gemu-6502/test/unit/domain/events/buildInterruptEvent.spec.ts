@@ -10,8 +10,8 @@ describe('Unit', () => {
             it('should push the program counter and status register to the stack', () => {
                 const writeStub = sinon.stub()
                 const bus = {
-                    write: writeStub,
-                    read: sinon.stub()
+                    writeCommand: writeStub,
+                    readQuery: sinon.stub()
                 }
                 const previous = build6502State()
                 previous.pc = 0x1234
@@ -43,8 +43,8 @@ describe('Unit', () => {
             it('should set the program counter to the addressed stored by the specified vector', () => {
                 const vector = 0x4545
                 const bus = {
-                    write: sinon.stub(),
-                    read: (address: number): number => {
+                    writeCommand: sinon.stub(),
+                    readQuery: (address: number): number => {
                         switch (address) {
                             case vector + 0:
                                 return 0x65
@@ -67,8 +67,8 @@ describe('Unit', () => {
 
             it('should set disable interrupt flag and clear the irq and nmi flags', () => {
                 const bus = {
-                    write: sinon.stub(),
-                    read: sinon.stub()
+                    writeCommand: sinon.stub(),
+                    readQuery: sinon.stub()
                 }
                 const previous = build6502State()
                 previous.irq = true

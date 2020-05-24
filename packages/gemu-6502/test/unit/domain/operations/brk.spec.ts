@@ -5,7 +5,7 @@ import * as sinonChai from 'sinon-chai'
 import brk from '../../../../src/domain/operations/brk'
 import { IRQ_VECTOR, B_BRK } from '../../../../src/domain/constants'
 import Bus from 'gemu-interfaces/dist/Bus'
-import { build6502State } from '../../../helpers/factories'
+import { build6502State, buildBus } from '../../../helpers/factories'
 import * as buildInterruptEventUnit from '../../../../src/domain/events/buildInterruptEvent'
 chai.use(chaiSubset)
 chai.use(sinonChai)
@@ -30,7 +30,7 @@ describe('Unit', () => {
                 const previous = build6502State()
                 const expected = build6502State()
                 buildInterruptEvent.returns(expected)
-                const bus = {} as Bus
+                const bus = buildBus()
 
                 const uut = brk
                 const actual = uut(previous, bus, 0x00)

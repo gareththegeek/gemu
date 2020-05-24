@@ -4,6 +4,7 @@ import * as chai from 'chai'
 import * as chaiSubset from 'chai-subset'
 import * as sinon from 'sinon'
 import * as sinonChai from 'sinon-chai'
+import { buildBus } from '../../../helpers/factories'
 chai.use(chaiSubset)
 chai.use(sinonChai)
 const expect = chai.expect
@@ -15,19 +16,17 @@ describe('Unit', () => {
                 const sp = 0x81
                 const pc = 0xbeef + 1
 
-                const bus = {
-                    write: sinon.stub(),
-                    read: (address: number): number => {
-                        switch (address) {
-                            case 0x0182:
-                                return 0xef
-                            case 0x0183:
-                                return 0xbe
-                            default:
-                                return 0x00
-                        }
+                const bus = buildBus()
+                bus.readQuery.callsFake((address: number): number => {
+                    switch (address) {
+                        case 0x0182:
+                            return 0xef
+                        case 0x0183:
+                            return 0xbe
+                        default:
+                            return 0x00
                     }
-                }
+                })
 
                 const actual = testOperation(rts, { sp, pc: 0x1234 }, {}, 0x00, bus)
 

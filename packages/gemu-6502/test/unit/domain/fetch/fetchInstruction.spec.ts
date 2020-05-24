@@ -36,8 +36,8 @@ describe('Unit', () => {
                 const readStub = sinon.stub()
                 readStub.returns(expected.opcode)
                 const bus = {
-                    write: sinon.stub(),
-                    read: readStub
+                    writeCommand: sinon.stub(),
+                    readQuery: readStub
                 } as Bus
 
                 const uut = fetchInstruction
@@ -60,8 +60,8 @@ describe('Unit', () => {
                 const readStub = sinon.stub()
                 readStub.returns(expected.opcode + 1)
                 const bus = {
-                    write: sinon.stub(),
-                    read: readStub
+                    writeCommand: sinon.stub(),
+                    readQuery: readStub
                 } as Bus
 
                 const uut = fetchInstruction

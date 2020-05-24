@@ -1,6 +1,5 @@
 import nop from '../../../../src/domain/operations/nop'
-import { build6502State } from '../../../helpers/factories'
-import Bus from 'gemu-interfaces/dist/Bus'
+import { build6502State, buildBus } from '../../../helpers/factories'
 import { expect } from 'chai'
 
 describe('Unit', () => {
@@ -10,7 +9,7 @@ describe('Unit', () => {
                 const previous = build6502State()
 
                 const uut = nop
-                const actual = uut(previous, {} as Bus, 0x00)
+                const actual = uut(previous, buildBus(), 0x00)
 
                 expect(actual).to.deep.equal({})
             })

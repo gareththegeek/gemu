@@ -4,7 +4,8 @@
   "description": "Common interfaces for gemu emulation project",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "author": "gareththegeek",
   "license": "ISC",

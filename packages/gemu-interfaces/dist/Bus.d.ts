@@ -1,4 +1,6 @@
-export default interface Bus {
-    readQuery: (address: number) => number;
-    writeCommand: (address: number, value: number) => void;
+import Component from "./Component";
+import RangedComponent from "./RangedComponent";
+export default interface Bus extends Component {
+    attachComponentCommand: (rangedComponent: RangedComponent) => void;
+    detachComponentCommand: (rangedComponent: RangedComponent) => void;
 }

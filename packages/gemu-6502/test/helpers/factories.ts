@@ -35,7 +35,8 @@ export const build6502State = (): State => ({
 
 export const buildBus = (): SinonStubbedInstance<Bus> => ({
     readQuery: sinon.stub(),
-    writeCommand: sinon.stub()
+    writeCommand: sinon.stub(),
+    attachComponentCommand: sinon.stub()
 })
 
 // export interface I6502System {

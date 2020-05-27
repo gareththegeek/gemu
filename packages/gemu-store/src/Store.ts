@@ -6,6 +6,7 @@ export const buildStore = <T>(): Store<T> => {
     let state: T
     return {
         read: () => _.cloneDeep(state),
-        write: (event: Event<T>) => state = _.merge({}, state, event)
+        write: (event: Event<T>) => state = _.merge({}, state, event),
+        overwrite: (nextState: T) => state = _.merge({}, nextState)
     }
 }

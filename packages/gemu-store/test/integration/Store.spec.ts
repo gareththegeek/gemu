@@ -55,5 +55,44 @@ describe('Store', () => {
                 expect(actual).not.to.equal(expected)
             })
         })
+
+        describe('overwrite', () => {
+            it('should totally replace state with specified new state', () => {
+                const store = buildStore()
+                store.write({
+                    foo: 'bar',
+                    nested: {
+                        value: 'string1'
+                    }
+                })
+                
+                const expected = {
+                    nested: {
+                        value: 'string2'
+                    }
+                }
+                store.overwrite(expected)
+
+                const actual = store.read()
+
+                expect(actual).to.be.deep.equal(expected)
+            })
+
+            it('should replace arrays', () => {
+                const store = buildStore()
+                store.write({
+                    array: [1, 2, 3]
+                })
+                
+                const expected = {
+                    array: [5, 6, 7, 8]
+                }
+                store.overwrite(expected)
+
+                const actual = store.read()
+
+                expect(actual).to.be.deep.equal(expected)
+            })
+        })
     })
 })

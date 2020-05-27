@@ -8,12 +8,39 @@
             "type": "node",
             "request": "launch",
             "name": "6502 Tests",
-            "program": "${workspaceRoot}\\packages\\6502\\node_modules\\jest\\bin\\jest.js",
-            "cwd": "${workspaceFolder}\\packages\\6502",
+            "program": "${workspaceRoot}\\packages\\gemu-6502\\node_modules\\jest\\bin\\jest.js",
+            "cwd": "${workspaceFolder}\\packages\\gemu-6502",
             "args": [
                 "-i"
             ],
-            //"preLaunchTask": "build",
+            "internalConsoleOptions": "openOnSessionStart",
+            "outFiles": [
+                "${workspaceRoot}/dist/**/*"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Bus Tests",
+            "program": "${workspaceRoot}\\packages\\gemu-bus\\node_modules\\jest\\bin\\jest.js",
+            "cwd": "${workspaceFolder}\\packages\\gemu-bus",
+            "args": [
+                "-i"
+            ],
+            "internalConsoleOptions": "openOnSessionStart",
+            "outFiles": [
+                "${workspaceRoot}/dist/**/*"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Memory Tests",
+            "program": "${workspaceRoot}\\packages\\gemu-memory\\node_modules\\jest\\bin\\jest.js",
+            "cwd": "${workspaceFolder}\\packages\\gemu-memory",
+            "args": [
+                "-i"
+            ],
             "internalConsoleOptions": "openOnSessionStart",
             "outFiles": [
                 "${workspaceRoot}/dist/**/*"

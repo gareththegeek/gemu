@@ -1,5 +1,5 @@
 import State from './State'
-import RangedComponent from 'gemu-interfaces/dist/RangedComponent'
+import { RangedComponent } from 'gemu-interfaces'
 
 export const getComponentAt = (state: State, address: number): RangedComponent => 
     state.components.find(x =>

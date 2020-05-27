@@ -1,4 +1,4 @@
-import RangedComponent from 'gemu-interfaces/dist/RangedComponent'
+import { RangedComponent } from 'gemu-interfaces'
 
 export const writeToComponent = (rangedComponent: RangedComponent, address: number, value: number) => {
     const {

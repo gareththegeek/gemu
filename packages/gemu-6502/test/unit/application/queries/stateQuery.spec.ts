@@ -3,7 +3,7 @@ import * as chai from 'chai'
 import * as sinon from 'sinon'
 import * as sinonChai from 'sinon-chai'
 import stateQuery from '../../../../src/application/queries/stateQuery'
-import Store from 'gemu-interfaces/dist/Store'
+import { Store } from 'gemu-interfaces'
 import { build6502State } from '../../../helpers/factories'
 import State from '../../../../src/domain/State'
 const expect = chai.expect

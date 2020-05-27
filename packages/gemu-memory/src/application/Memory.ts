@@ -1,5 +1,5 @@
-import Store from 'gemu-interfaces/dist/Store'
-import Component from 'gemu-interfaces/dist/Component'
+import { Store } from 'gemu-interfaces'
+import { Component } from 'gemu-interfaces'
 import State from '../domain/State'
 import { readQuery } from './queries/readQuery'
 import { initialiseCommand } from './commands/initialiseCommand'

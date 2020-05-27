@@ -1,6 +1,6 @@
-import Event from 'gemu-interfaces/dist/Event'
+import { Event } from 'gemu-interfaces'
 import State from '../State'
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Bus } from 'gemu-interfaces'
 import { buildBranchEvent } from '../events/buildBranchEvent'
 
 const bvs = (state: State, _: Bus, parameter: number): Event<State> =>

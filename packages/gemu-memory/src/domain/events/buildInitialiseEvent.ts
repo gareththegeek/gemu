@@ -1,4 +1,4 @@
-import Event from 'gemu-interfaces/dist/Event'
+import { Event } from 'gemu-interfaces'
 import { PAGE_SIZE } from '../constants'
 import State from '../State'
 

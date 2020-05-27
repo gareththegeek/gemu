@@ -1,5 +1,5 @@
-import Event from 'gemu-interfaces/dist/Event'
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Event } from 'gemu-interfaces'
+import { Bus } from 'gemu-interfaces'
 import {
     INITIALISATION_CYCLES,
     RESET_VECTOR

@@ -1,7 +1,7 @@
 import State from '../../src/domain/State'
 import { SinonStubbedInstance } from 'sinon'
 import sinon = require('sinon')
-import Store from 'gemu-interfaces/dist/Store'
+import { Store } from 'gemu-interfaces'
 
 export const buildState = (): State => ({
     data: [],

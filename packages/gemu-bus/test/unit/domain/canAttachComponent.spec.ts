@@ -1,7 +1,7 @@
 import * as chai from 'chai'
 import { canAttachComponent } from '../../../src/domain/canAttachComponent'
 import { buildRangedComponent, buildState, buildRange } from '../../helpers/factories'
-import Range from 'gemu-interfaces/dist/Range'
+import { Range } from 'gemu-interfaces'
 const expect = chai.expect
 
 describe('Bus', () => {

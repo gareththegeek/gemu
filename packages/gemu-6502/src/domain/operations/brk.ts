@@ -1,6 +1,6 @@
-import Event from 'gemu-interfaces/dist/Event'
+import { Event } from 'gemu-interfaces'
 import State from '../State'
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Bus } from 'gemu-interfaces'
 import { buildInterruptEvent } from '../events/buildInterruptEvent'
 import { BRK_VECTOR, B_BRK } from '../constants'
 

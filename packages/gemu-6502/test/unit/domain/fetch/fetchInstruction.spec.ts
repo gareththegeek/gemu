@@ -3,8 +3,9 @@ import sinon = require('sinon')
 import * as chai from 'chai'
 import * as sinonChai from 'sinon-chai'
 import buildInstruction from '../../../../src/domain/fetch/buildInstruction'
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Bus } from 'gemu-interfaces'
 import * as instructionTableUnit from '../../../../src/domain/fetch/instructionTable'
+import { buildBus } from '../../../helpers/factories'
 chai.use(sinonChai)
 const expect = chai.expect
 
@@ -33,17 +34,13 @@ describe('Unit', () => {
                 getInstructionTable.returns(table)
 
                 const expectedAddress = 0x123
-                const readStub = sinon.stub()
-                readStub.returns(expected.opcode)
-                const bus = {
-                    writeCommand: sinon.stub(),
-                    readQuery: readStub
-                } as Bus
+                const bus = buildBus()
+                bus.readQuery.returns(expected.opcode)
 
                 const uut = fetchInstruction
                 const actual = uut(bus, expectedAddress)
 
-                expect(readStub).to.have.been.calledWith(expectedAddress)
+                expect(bus.readQuery).to.have.been.calledWith(expectedAddress)
                 expect(actual).to.deep.equal(expected)
             })
 
@@ -57,17 +54,13 @@ describe('Unit', () => {
                 getInstructionTable.returns(table)
                 
                 const expectedAddress = 0x123
-                const readStub = sinon.stub()
-                readStub.returns(expected.opcode + 1)
-                const bus = {
-                    writeCommand: sinon.stub(),
-                    readQuery: readStub
-                } as Bus
+                const bus = buildBus()
+                bus.readQuery.returns(expected.opcode + 1)
 
                 const uut = fetchInstruction
                 const actual = uut(bus, expectedAddress)
 
-                expect(readStub).to.have.been.calledWith(expectedAddress)
+                expect(bus.readQuery).to.have.been.calledWith(expectedAddress)
                 expect(actual).to.deep.equal(expected)
             })
         })

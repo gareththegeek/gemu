@@ -2,7 +2,7 @@ import * as chai from 'chai'
 import * as sinonChai from 'sinon-chai'
 import getAddressingMode from '../../../../src/domain/fetch/getAddressingMode'
 import sinon = require('sinon')
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Bus } from 'gemu-interfaces'
 import DataRegisters from '../../../../src/domain/DataRegisters'
 import * as addressingModeTableUnit from '../../../../src/domain/addressingModes/addressingModeTable'
 chai.use(sinonChai)

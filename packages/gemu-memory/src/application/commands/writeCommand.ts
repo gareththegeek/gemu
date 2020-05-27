@@ -1,4 +1,4 @@
-import Store from 'gemu-interfaces/dist/Store'
+import { Store } from 'gemu-interfaces'
 import State from '../../domain/State'
 import { buildWriteState } from '../../domain/events/buildWriteState'
 

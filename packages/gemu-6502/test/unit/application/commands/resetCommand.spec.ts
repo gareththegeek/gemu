@@ -3,7 +3,7 @@ import * as chai from 'chai'
 import * as sinonChai from 'sinon-chai'
 import resetCommand from '../../../../src/application/commands/resetCommand'
 import * as buildResetEventUnit from '../../../../src/domain/events/buildResetEvent'
-import Store from 'gemu-interfaces/dist/Store'
+import { Store } from 'gemu-interfaces'
 import State from '../../../../src/domain/State'
 const expect = chai.expect
 chai.use(sinonChai)

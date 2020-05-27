@@ -1,6 +1,6 @@
 import State from '../State'
-import Event from 'gemu-interfaces/dist/Event'
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Event } from 'gemu-interfaces'
+import { Bus } from 'gemu-interfaces'
 import DataRegisters from '../DataRegisters'
 import fetchInstruction from '../fetch/fetchInstruction'
 import fetchOperand from '../fetch/fetchOperand'

@@ -1,5 +1,4 @@
-import Bus from 'gemu-interfaces/dist/Bus'
-import Store from 'gemu-interfaces/dist/Store'
+import { Bus, Store } from 'gemu-interfaces'
 import State from '../../domain/State'
 import Command from 'gemu-interfaces/src/Command'
 import { buildInitialiseEvent } from '../../domain/events/buildInitialiseEvent'

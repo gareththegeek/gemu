@@ -1,6 +1,6 @@
-import Event from 'gemu-interfaces/dist/Event'
+import { Event } from 'gemu-interfaces'
 import State from '../State'
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Bus } from 'gemu-interfaces'
 import isZero from '../bitwise/isZero'
 import isBitZeroSet from '../bitwise/isBitZeroSet'
 

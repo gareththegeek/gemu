@@ -1,4 +1,4 @@
-import Event from 'gemu-interfaces/dist/Event'
+import { Event } from 'gemu-interfaces'
 import State from '../State'
 import isPageCrossed from '../bitwise/isPageCrossed'
 

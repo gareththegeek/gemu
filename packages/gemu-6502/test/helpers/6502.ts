@@ -1,6 +1,6 @@
-import Event from 'gemu-interfaces/dist/Event'
+import { Event } from 'gemu-interfaces'
 import Operation from '../../src/domain/Operation'
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Bus } from 'gemu-interfaces'
 import { build6502State } from './factories'
 import State from '../../src/domain/State'
 

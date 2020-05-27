@@ -10,7 +10,7 @@
 
 import State from '../../src/domain/State'
 import { SinonStubbedInstance } from 'sinon'
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Bus, Store } from 'gemu-interfaces'
 import sinon = require('sinon')
 
 export const build6502State = (): State => ({
@@ -37,6 +37,12 @@ export const buildBus = (): SinonStubbedInstance<Bus> => ({
     readQuery: sinon.stub(),
     writeCommand: sinon.stub(),
     attachComponentCommand: sinon.stub()
+})
+
+export const buildStore = (): SinonStubbedInstance<Store<State>> => ({
+    read: sinon.stub(),
+    write: sinon.stub(),
+    overwrite: sinon.stub()
 })
 
 // export interface I6502System {

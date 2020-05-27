@@ -1,10 +1,10 @@
 import { SinonStubbedInstance } from 'sinon'
-import RangedComponent from 'gemu-interfaces/dist/RangedComponent'
-import Range from 'gemu-interfaces/dist/Range'
-import Component from 'gemu-interfaces/dist/Component'
+import { RangedComponent } from 'gemu-interfaces'
+import { Range } from 'gemu-interfaces'
+import { Component } from 'gemu-interfaces'
 import * as sinon from 'sinon'
 import State from '../../src/domain/State'
-import Store from 'gemu-interfaces/dist/Store'
+import { Store } from 'gemu-interfaces'
 
 export const buildRange = (s?: number, f?: number): Range => ({
     start: s || 0,

@@ -1,5 +1,5 @@
-import Command from 'gemu-interfaces/dist/Command'
-import Store from 'gemu-interfaces/dist/Store'
+import { Command } from 'gemu-interfaces'
+import { Store } from 'gemu-interfaces'
 import State from '../../domain/State'
 import { getComponentAt } from '../../domain/getComponentAt'
 import { writeToComponent } from '../../domain/writeToComponent'

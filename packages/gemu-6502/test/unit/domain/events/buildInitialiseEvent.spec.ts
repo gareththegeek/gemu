@@ -1,16 +1,14 @@
 import { expect } from 'chai'
 import { buildInitialiseEvent } from '../../../../src/domain/events/buildInitialiseEvent'
 import sinon = require('sinon')
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Bus } from 'gemu-interfaces'
+import { buildBus } from '../../../helpers/factories'
 
 describe('Unit', () => {
     describe('6502', () => {
         describe('initialise', () => {
             it('should return an initialise state for the 6502 with correct number of initialisation cycles', () => {
-                const bus = {
-                    readQuery: sinon.stub(),
-                    writeCommand: sinon.stub()
-                } as Bus
+                const bus = buildBus()
 
                 const uut = buildInitialiseEvent
                 const actual = uut(bus)
@@ -31,19 +29,17 @@ describe('Unit', () => {
 
             it('should read the initial value for the pc from addresses 0xfffc and 0fffd on the bus', () => {
                 const expected = 0x1234
-                const bus = {
-                    readQuery: (address: number): number => {
-                        switch (address) {
-                            case 0xfffc:
-                                return 0x34
-                            case 0xfffd:
-                                return 0x12
-                            default:
-                                return 0x00
-                        }
-                    },
-                    writeCommand: sinon.stub()
-                } as Bus
+                const bus = buildBus()
+                bus.readQuery.callsFake((address: number): number => {
+                    switch (address) {
+                        case 0xfffc:
+                            return 0x34
+                        case 0xfffd:
+                            return 0x12
+                        default:
+                            return 0x00
+                    }
+                })
 
                 const uut = buildInitialiseEvent
                 const actual = uut(bus)

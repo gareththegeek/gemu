@@ -1,5 +1,5 @@
-import Query from 'gemu-interfaces/dist/Query'
-import Store from 'gemu-interfaces/dist/Store'
+import { Query } from 'gemu-interfaces'
+import { Store } from 'gemu-interfaces'
 import State from '../../domain/State'
 import { getComponentAt } from '../../domain/getComponentAt'
 import { readFromComponent } from '../../domain/readFromComponent'

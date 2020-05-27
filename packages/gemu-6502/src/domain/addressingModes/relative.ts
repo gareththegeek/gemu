@@ -1,4 +1,4 @@
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Bus } from 'gemu-interfaces'
 import DataRegisters from '../DataRegisters'
 import toSigned from '../bitwise/toSigned'
 

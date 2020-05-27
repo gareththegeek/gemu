@@ -3,7 +3,7 @@ import * as sinonChai from 'sinon-chai'
 import { buildRangedComponent, buildRange } from '../../helpers/factories'
 import { readFromComponent } from '../../../src/domain/readFromComponent'
 import { SinonStubbedInstance } from 'sinon'
-import Component from 'gemu-interfaces/dist/Component'
+import { Component } from 'gemu-interfaces'
 chai.use(sinonChai)
 const expect = chai.expect
 

@@ -7,10 +7,10 @@ import * as buildInitialiseEventUnit from '../../../../src/domain/events/buildIn
 import * as buildNmiInterruptEventUnit from '../../../../src/domain/events/buildNmiInterruptEvent'
 import * as buildIrqInterruptEventUnit from '../../../../src/domain/events/buildIrqInterruptEvent'
 import * as buildOperationEventUnit from '../../../../src/domain/events/buildOperationEvent'
-import Store from 'gemu-interfaces/dist/Store'
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Store } from 'gemu-interfaces'
+import { Bus } from 'gemu-interfaces'
 import State from '../../../../src/domain/State'
-import { build6502State } from '../../../helpers/factories'
+import { build6502State, buildBus, buildStore } from '../../../helpers/factories'
 const expect = chai.expect
 chai.use(sinonChai)
 
@@ -30,14 +30,8 @@ describe('Unit', () => {
 
             beforeEach(() => {
                 sandbox = createSandbox()
-                bus = {
-                    read: sandbox.stub(),
-                    write: sandbox.stub()
-                }
-                store = {
-                    read: sandbox.stub(),
-                    write: sandbox.stub()
-                }
+                bus = buildBus()
+                store = buildStore()
                 buildWaitCycleEvent = sandbox.stub(buildWaitCycleEventUnit, 'buildWaitCycleEvent')
                 buildInitialiseEvent = sandbox.stub(buildInitialiseEventUnit, 'buildInitialiseEvent')
                 buildNmiInterruptEvent = sandbox.stub(buildNmiInterruptEventUnit, 'buildNmiInterruptEvent')

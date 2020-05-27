@@ -1,6 +1,6 @@
-import Command from 'gemu-interfaces/dist/Command'
-import RangedComponent from 'gemu-interfaces/dist/RangedComponent'
-import Store from 'gemu-interfaces/dist/Store'
+import { Command } from 'gemu-interfaces'
+import { RangedComponent } from 'gemu-interfaces'
+import { Store } from 'gemu-interfaces'
 import State from '../../domain/State'
 import { canAttachComponent } from '../../domain/canAttachComponent'
 

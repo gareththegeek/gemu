@@ -1,4 +1,4 @@
-import RangedComponent from 'gemu-interfaces/dist/RangedComponent'
+import { RangedComponent } from 'gemu-interfaces'
 import State from './State'
 
 export const canAttachComponent = (state: State, component: RangedComponent): boolean => {

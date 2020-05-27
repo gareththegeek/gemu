@@ -1,5 +1,5 @@
-import Bus from 'gemu-interfaces/dist/Bus'
-import Store from 'gemu-interfaces/dist/Store'
+import { Bus } from 'gemu-interfaces'
+import { Store } from 'gemu-interfaces'
 import State from '../domain/State'
 import { readQuery } from './queries/readQuery'
 import { writeCommand } from './commands/writeCommand'

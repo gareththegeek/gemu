@@ -1,7 +1,7 @@
 import * as chai from 'chai'
 import * as sinonChai from 'sinon-chai'
 import sinon = require('sinon')
-import Bus from 'gemu-interfaces/dist/Bus'
+import { Bus } from 'gemu-interfaces'
 import { testOperation } from '../../../helpers/6502'
 import stx from '../../../../src/domain/operations/stx'
 import { buildBus } from '../../../helpers/factories'

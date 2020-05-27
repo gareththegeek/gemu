@@ -1,5 +1,5 @@
-import Store from 'gemu-interfaces/dist/Store'
-import Event from 'gemu-interfaces/dist/Event'
+import { Store } from 'gemu-interfaces'
+import { Event } from 'gemu-interfaces'
 import * as _ from 'lodash'
 
 export const buildStore = <T>(): Store<T> => {

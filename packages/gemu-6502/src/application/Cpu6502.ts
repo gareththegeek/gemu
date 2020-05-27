@@ -17,7 +17,7 @@ export default interface Cpu6502 {
     nmiCommand: Command
 }
 
-export const createCpu6502 = (bus: Bus, store: Store<State>) => ({
+export const buildCpu6502 = (bus: Bus, store: Store<State>) => ({
     stateQuery: stateQuery(store),
     resetCommand: resetCommand(store),
     clockCommand: clockCommand(bus, store),

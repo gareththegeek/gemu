@@ -9,7 +9,8 @@
   "description": "Emulation",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "lerna run build --stream"
   },
   "author": "gareththegeek",
   "license": "ISC"

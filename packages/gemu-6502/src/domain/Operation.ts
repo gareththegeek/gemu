@@ -1,7 +1,6 @@
-import Event from './Event'
+import { Event, Bus } from 'gemu-interfaces'
 import State from './State'
-import Bus from '../infrastructure/Bus'
 
-type Operation = (state: State, bus: Bus, parameter: number) => Event
+type Operation = (state: State, bus: Bus, parameter: number) => Event<State>
 
 export default Operation

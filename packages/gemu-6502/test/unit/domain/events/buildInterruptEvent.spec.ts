@@ -1,18 +1,14 @@
 import * as sinon from 'sinon'
 import * as chai from 'chai'
 import { buildInterruptEvent } from '../../../../src/domain/events/buildInterruptEvent'
-import { build6502State } from '../../../helpers/factories'
+import { build6502State, buildBus } from '../../../helpers/factories'
 const expect = chai.expect
 
 describe('Unit', () => {
     describe('6502', () => {
         describe('buildInterruptEvent', () => {
             it('should push the program counter and status register to the stack', () => {
-                const writeStub = sinon.stub()
-                const bus = {
-                    writeCommand: writeStub,
-                    readQuery: sinon.stub()
-                }
+                const bus = buildBus()
                 const previous = build6502State()
                 previous.pc = 0x1234
                 previous.sp = 0xff
@@ -28,23 +24,22 @@ describe('Unit', () => {
                 const uut = buildInterruptEvent
                 const actual = uut(previous, bus, 0x8765, 0x30)
 
-                expect(writeStub.getCall(0).args[0]).to.be.deep.equal(0x01ff)
-                expect(writeStub.getCall(0).args[1]).to.be.deep.equal(0x12)
+                expect(bus.writeCommand.getCall(0).args[0]).to.be.deep.equal(0x01ff)
+                expect(bus.writeCommand.getCall(0).args[1]).to.be.deep.equal(0x12)
 
-                expect(writeStub.getCall(1).args[0]).to.be.deep.equal(0x01fe)
-                expect(writeStub.getCall(1).args[1]).to.be.deep.equal(0x34)
+                expect(bus.writeCommand.getCall(1).args[0]).to.be.deep.equal(0x01fe)
+                expect(bus.writeCommand.getCall(1).args[1]).to.be.deep.equal(0x34)
 
-                expect(writeStub.getCall(2).args[0]).to.be.deep.equal(0x01fd)
-                expect(writeStub.getCall(2).args[1]).to.be.deep.equal(0xba)
+                expect(bus.writeCommand.getCall(2).args[0]).to.be.deep.equal(0x01fd)
+                expect(bus.writeCommand.getCall(2).args[1]).to.be.deep.equal(0xba)
 
                 expect(actual.sp).to.be.equal(0xfc)
             })
 
             it('should set the program counter to the addressed stored by the specified vector', () => {
                 const vector = 0x4545
-                const bus = {
-                    writeCommand: sinon.stub(),
-                    readQuery: (address: number): number => {
+                const bus = buildBus()
+                bus.readQuery.callsFake((address: number): number => {
                         switch (address) {
                             case vector + 0:
                                 return 0x65
@@ -53,8 +48,7 @@ describe('Unit', () => {
                             default:
                                 return 0x00
                         }
-                    }
-                }
+                    })
                 const previous = build6502State()
                 previous.pc = 0x1234
                 previous.sp = 0xff
@@ -66,10 +60,7 @@ describe('Unit', () => {
             })
 
             it('should set disable interrupt flag and clear the irq and nmi flags', () => {
-                const bus = {
-                    writeCommand: sinon.stub(),
-                    readQuery: sinon.stub()
-                }
+                const bus = buildBus()
                 const previous = build6502State()
                 previous.irq = true
                 previous.nmi = true

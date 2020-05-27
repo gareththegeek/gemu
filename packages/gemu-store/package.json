@@ -2,9 +2,12 @@
   "name": "gemu-store",
   "version": "0.1.1",
   "description": "Store implementation for emulation project",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "author": "gareththegeek",
   "license": "ISC",

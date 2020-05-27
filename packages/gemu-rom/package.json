@@ -2,9 +2,12 @@
   "name": "gemu-rom",
   "version": "0.1.1",
   "description": "ROM Component for gemu emulation",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "author": "gareththegeek",
   "license": "ISC",

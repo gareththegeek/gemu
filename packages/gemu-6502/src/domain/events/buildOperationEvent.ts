@@ -17,12 +17,19 @@ export const buildOperationEvent = (state: State, bus: Bus): Event<State> => {
     const dataRegisters = (({ a, x, y }): DataRegisters => ({ a, x, y }))(state)
     const parameter = getAddressingMode(bus, instruction.addressingMode, operand, dataRegisters)
 
-    const preExecuteState = {
-        ...state,
+    const preExecuteEvent = {
         pc: state.pc + instruction.size,
         cycles: instruction.cycles
     }
 
+    const preExecuteState = {
+        ...state,
+        ...preExecuteEvent
+    }
+
     const operation = getOperation(instruction)
-    return operation(preExecuteState, bus, parameter)
+    return { 
+        ...preExecuteEvent,
+        ...operation(preExecuteState, bus, parameter)
+    }
 }

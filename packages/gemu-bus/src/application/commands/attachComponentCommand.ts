@@ -10,7 +10,7 @@ export const attachComponentCommand = (store: Store<State>): Command =>
 
         if (canAttachComponent(state, rangedComponent)) {
             store.write({
-                components: [rangedComponent]
+                components: [...state.components || [], rangedComponent]
             })
         }
     }

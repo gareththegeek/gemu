@@ -4,12 +4,14 @@ import { buildMemory } from 'gemu-memory'
 import { buildRom } from 'gemu-rom'
 import { buildCpu6502 } from 'gemu-6502'
 import { clockCommand } from './commands/clockCommand'
+import { resetCommand } from './commands/resetCommand'
 
 export default interface Nes {
-    clockCommand: Command
+    clockCommand: Command,
+    resetCommand: Command
 }
 
-export const buildNes = (storeFactory: StoreFactory): Nes => {
+export const buildNes = (storeFactory: StoreFactory, rom: number[]): Nes => {
     const bus = buildBus(storeFactory.buildStore())
     const cpu = buildCpu6502(bus, storeFactory.buildStore())
     bus.attachComponentCommand({
@@ -18,9 +20,10 @@ export const buildNes = (storeFactory: StoreFactory): Nes => {
     })
     bus.attachComponentCommand({
         range: { start: 2, finish: 3 },
-        component: buildRom(storeFactory.buildStore(), [])
+        component: buildRom(storeFactory.buildStore(), rom)
     })
     return {
-        clockCommand: clockCommand(cpu)
+        clockCommand: clockCommand(cpu),
+        resetCommand: resetCommand(cpu)
     }
 }

@@ -45,6 +45,20 @@
             "outFiles": [
                 "${workspaceRoot}/dist/**/*"
             ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "6502 Integration Tests",
+            "program": "${workspaceRoot}\\packages\\gemu-6502-tests\\node_modules\\jest\\bin\\jest.js",
+            "cwd": "${workspaceFolder}\\packages\\gemu-6502-tests",
+            "args": [
+                "-i"
+            ],
+            "internalConsoleOptions": "openOnSessionStart",
+            "outFiles": [
+                "${workspaceRoot}/dist/**/*"
+            ]
         }
     ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "gemu-6502",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "6502 CPU Emulation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,7 @@
     "@types/sinon-chai": "^3.2.4",
     "chai": "^4.2.0",
     "chai-subset": "^1.6.0",
-    "gemu-interfaces": "^0.1.1",
+    "gemu-interfaces": "^0.1.2",
     "jest": "^26.0.1",
     "sinon": "^9.0.2",
     "sinon-chai": "^3.5.0",

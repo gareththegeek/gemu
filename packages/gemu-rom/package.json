@@ -1,6 +1,6 @@
 {
   "name": "gemu-rom",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "ROM Component for gemu emulation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,7 +17,7 @@
     "@types/sinon": "^9.0.4",
     "@types/sinon-chai": "^3.2.4",
     "chai": "^4.2.0",
-    "gemu-interfaces": "^0.1.1",
+    "gemu-interfaces": "^0.1.2",
     "jest": "^26.0.1",
     "mocha": "^7.2.0",
     "sinon": "^9.0.2",

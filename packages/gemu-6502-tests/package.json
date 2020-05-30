@@ -1,6 +1,6 @@
 {
   "name": "gemu-6502-tests",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Integration tests for 6502 processor within simple system",
   "main": "index.js",
   "scripts": {
@@ -9,11 +9,11 @@
   "author": "gareththegeek",
   "license": "ISC",
   "dependencies": {
-    "gemu-6502": "^0.1.1",
-    "gemu-bus": "^0.1.1",
-    "gemu-memory": "^0.1.1",
-    "gemu-rom": "^0.1.1",
-    "gemu-store": "^0.1.1"
+    "gemu-6502": "^0.1.2",
+    "gemu-bus": "^0.1.2",
+    "gemu-memory": "^0.1.2",
+    "gemu-rom": "^0.1.2",
+    "gemu-store": "^0.1.2"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
@@ -23,7 +23,7 @@
     "@types/sinon-chai": "^3.2.4",
     "chai": "^4.2.0",
     "chai-subset": "^1.6.0",
-    "gemu-interfaces": "^0.1.1",
+    "gemu-interfaces": "^0.1.2",
     "jest": "^26.0.1",
     "mocha": "^7.2.0",
     "sinon": "^9.0.2",

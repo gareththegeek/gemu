@@ -22,6 +22,17 @@ describe('Unit', () => {
                 expect(bus.readQuery).to.have.been.calledWith(address)
                 expect(bus.writeCommand).to.have.been.calledWith(address, expected)
             })
+            
+            it('should write 0xff (unsigned) if decrement reduces value to -1 (signed)', () => {
+                const bus = buildBus()
+                const address = 0x1234
+                const expected = 0xff
+                bus.readQuery.returns(0x0)
+
+                testOperation(dec, {}, {}, address, bus)
+
+                expect(bus.writeCommand).to.have.been.calledWith(address, expected)
+            })
 
             it('should set zero flag if decremented value is zero', () => {
                 const bus = buildBus()

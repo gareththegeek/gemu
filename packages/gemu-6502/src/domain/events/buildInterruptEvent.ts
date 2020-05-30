@@ -17,13 +17,11 @@ export const buildInterruptEvent = (state: State, bus: Bus, vector: number, bfla
     const pc = littleEndian([lo, hi])
     
     return {
-        ...state,
         pc,
         sp: state.sp - 3,
         irq: false,
         nmi: false,
         status: {
-            ...state.status,
             irqDisable: true
         }
     }

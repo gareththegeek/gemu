@@ -1,6 +1,6 @@
 {
   "name": "gemu-nes",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "NES system gemu emulation",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,8 @@
   "dependencies": {
     "gemu-6502": "^0.1.2",
     "gemu-bus": "^0.1.2",
-    "gemu-nes-rom-loader": "^0.1.2",
     "gemu-memory": "^0.1.2",
+    "gemu-nes-rom-loader": "^0.1.3",
     "gemu-rom": "^0.1.2",
     "gemu-store": "^0.1.2"
   },

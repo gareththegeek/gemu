@@ -1,4 +1,4 @@
-import { Command, StoreFactory } from 'gemu-interfaces'
+import { Command, StoreFactory, Component, Bus, Range } from 'gemu-interfaces'
 import { buildBus } from 'gemu-bus'
 import { buildMemory } from 'gemu-memory'
 import { buildRom } from 'gemu-rom'
@@ -11,17 +11,32 @@ export default interface Nes {
     resetCommand: Command
 }
 
-export const buildNes = (storeFactory: StoreFactory, rom: number[]): Nes => {
+const attachComponentWithMirroredRanges = (bus: Bus, component: Component, ranges: Range[]): void => {
+    ranges.forEach(range => {
+        bus.attachComponentCommand({ range, component })
+    })
+}
+
+export const buildNes = (storeFactory: StoreFactory, romData: number[]): Nes => {
     const bus = buildBus(storeFactory.buildStore())
     const cpu = buildCpu6502(bus, storeFactory.buildStore())
-    bus.attachComponentCommand({
-        range: { start: 0, finish: 1 },
-        component: buildMemory(storeFactory.buildStore(), 1)
-    })
-    bus.attachComponentCommand({
-        range: { start: 2, finish: 3 },
-        component: buildRom(storeFactory.buildStore(), rom)
-    })
+
+    const memory = buildMemory(storeFactory.buildStore(), 1)
+    const memoryRanges = [
+        { start: 0x0000, finish: 0x07ff },
+        { start: 0x0800, finish: 0x0fff },
+        { start: 0x1000, finish: 0x17ff },
+        { start: 0x1800, finish: 0x1fff }
+    ]
+    attachComponentWithMirroredRanges(bus, memory, memoryRanges)
+    
+    const rom = buildRom(storeFactory.buildStore(), romData)
+    const romRanges = [
+        { start: 0x8000, finish: 0xbfff },
+        { start: 0xc000, finish: 0xffff }
+    ]
+    attachComponentWithMirroredRanges(bus, rom, romRanges)
+
     return {
         clockCommand: clockCommand(cpu),
         resetCommand: resetCommand(cpu)

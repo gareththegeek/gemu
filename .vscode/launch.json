@@ -63,6 +63,20 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "NES System Tests",
+            "program": "${workspaceRoot}\\packages\\gemu-nes\\node_modules\\jest\\bin\\jest.js",
+            "cwd": "${workspaceFolder}\\packages\\gemu-nes",
+            "args": [
+                "-i"
+            ],
+            "internalConsoleOptions": "openOnSessionStart",
+            "outFiles": [
+                "${workspaceRoot}/dist/**/*"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "NES ROM Loader Integration Tests",
             "program": "${workspaceRoot}\\packages\\gemu-nes-rom-loader\\node_modules\\jest\\bin\\jest.js",
             "cwd": "${workspaceFolder}\\packages\\gemu-nes-rom-loader",

@@ -8,18 +8,18 @@ import getAddressingMode from '../fetch/getAddressingMode'
 import getOperation from '../execute/getOperation'
 
 export const buildOperationEvent = (state: State, bus: Bus): Event<State> => {
-    //TODO extra cycles
     //TODO address mirroring
-    //TODO check all ops for overflows e.g. 0xff + 1
     //TODO implement h/w bugs
     const instruction = fetchInstruction(bus, state.pc)
     const operand = fetchOperand(bus, state.pc + 1, instruction.size - 1)
     const dataRegisters = (({ a, x, y }): DataRegisters => ({ a, x, y }))(state)
-    const parameter = getAddressingMode(bus, instruction.addressingMode, operand, dataRegisters)
+    const result = getAddressingMode(bus, instruction.addressingMode, operand, dataRegisters)
+
+    const addCycle = result.pageBoundaryCrossed && instruction.addPageBoundaryCycle
 
     const preExecuteEvent = {
         pc: state.pc + instruction.size,
-        cycles: instruction.cycles
+        cycles: instruction.cycles + (addCycle ? 1 : 0)
     }
 
     const preExecuteState = {
@@ -30,6 +30,6 @@ export const buildOperationEvent = (state: State, bus: Bus): Event<State> => {
     const operation = getOperation(instruction)
     return { 
         ...preExecuteEvent,
-        ...operation(preExecuteState, bus, parameter)
+        ...operation(preExecuteState, bus, result.parameter)
     }
 }

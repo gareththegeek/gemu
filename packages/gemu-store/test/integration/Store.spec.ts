@@ -16,7 +16,7 @@ describe('Store', () => {
 
             it('should merge changes into existing state and return result when read', () => {
                 const store = buildStore<TestInterface>()
-                expect(store.read()).to.be.undefined
+                expect(store.read()).to.deep.equal({})
 
                 store.write({ a: 4 })
                 expect(store.read()).to.deep.equal({ a: 4 })

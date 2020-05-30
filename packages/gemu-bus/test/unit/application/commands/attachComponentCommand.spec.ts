@@ -40,6 +40,8 @@ describe('Bus', () => {
             it('should write component to store if it can be attached', () => {
                 const expected = buildRangedComponent()
                 const store = buildStore()
+                const state = buildState()
+                store.read.returns(state)
 
                 canAttachComponent.returns(true)
 

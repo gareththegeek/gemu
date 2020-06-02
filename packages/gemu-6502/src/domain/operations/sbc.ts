@@ -16,7 +16,7 @@ const sbc = (state: State, _: Bus, parameter: number): Event<State> => {
         status: {
             zero: isZero(next8),
             negative: isNegative(next8),
-            overflow: isOverflow(state.a - carry, ~parameter, next16),
+            overflow: isOverflow(state.a /*- carry*/, ~parameter, next16),
             carry: !isNegative(next8)
         }
     }

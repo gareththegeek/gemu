@@ -4,5 +4,6 @@ export default interface Instruction {
     addressingMode: string
     size: number
     cycles: number
+    read: boolean
     addPageBoundaryCycle: boolean
 }

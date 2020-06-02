@@ -4,10 +4,10 @@ import littleEndian from '../bitwise/littleEndian'
 import AddressingModeResult from '../AddressingModeResult'
 import isPageCrossed from '../bitwise/isPageCrossed'
 
-const absoluteIndexedY = (bus: Bus, operand: number[], registers: DataRegisters): AddressingModeResult => {
+const absoluteIndexedY = (_: Bus, operand: number[], registers: DataRegisters): Partial<AddressingModeResult> => {
     const base = littleEndian(operand)
     return {
-        parameter: bus.readQuery(base + registers.y),
+        parameter: base + registers.y,
         pageBoundaryCrossed: isPageCrossed(base, registers.y)
     }
 }

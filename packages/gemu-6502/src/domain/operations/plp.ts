@@ -8,7 +8,10 @@ const plp = (state: State, bus: Bus, _: number): Event<State> => {
     const next = bus.readQuery(getStackAddress(state.sp + 1))
     return {
         sp: state.sp + 1,
-        status: getByteStatus(next)
+        status: {
+            ...getByteStatus(next & 0xcf),
+            break: state.status.break
+        }
     }
 }
 

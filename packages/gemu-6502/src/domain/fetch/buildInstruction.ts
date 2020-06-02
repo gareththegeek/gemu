@@ -6,6 +6,7 @@ const buildInstruction = (
     addressingMode: string,
     size: number,
     cycles: number,
+    read: boolean,
     addPageBoundaryCycle = false
 ): Instruction => ({
     opcode,
@@ -13,6 +14,7 @@ const buildInstruction = (
     addressingMode,
     size,
     cycles,
+    read,
     addPageBoundaryCycle
 })
 

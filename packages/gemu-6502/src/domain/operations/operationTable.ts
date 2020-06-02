@@ -3,6 +3,7 @@ import brk from './brk'
 import adc from './adc'
 import and from './and'
 import asl from './asl'
+import asla from './asla'
 import bcc from './bcc'
 import beq from './beq'
 import bit from './bit'
@@ -31,11 +32,14 @@ import lda from './lda'
 import ldx from './ldx'
 import ldy from './ldy'
 import lsr from './lsr'
+import lsra from './lsra'
 import nop from './nop'
 import ora from './ora'
 import php from './php'
 import rol from './rol'
+import rola from './rola'
 import ror from './ror'
+import rora from './rora'
 import rti from './rti'
 import rts from './rts'
 import sbc from './sbc'
@@ -60,6 +64,7 @@ const OPERATION_TABLE: { [mnemonic: string]: Operation } = {
     adc,
     and,
     asl,
+    asla,
     bcc,
     bcs,
     beq,
@@ -90,6 +95,7 @@ const OPERATION_TABLE: { [mnemonic: string]: Operation } = {
     ldx,
     ldy,
     lsr,
+    lsra,
     nop,
     ora,
     pha,
@@ -97,7 +103,9 @@ const OPERATION_TABLE: { [mnemonic: string]: Operation } = {
     pla,
     plp,
     rol,
+    rola,
     ror,
+    rora,
     rti,
     rts,
     sbc,

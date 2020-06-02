@@ -28,7 +28,7 @@ export const logState = (
     const operands = operand.map(o => byte(o)).join(' ').padEnd(5, ' ')
     //const flags = `${flag(negative, 'N')}${flag(overflow, 'V')} ${flag(state.status.break, 'B')} ${flag(irqDisable, 'I')}${flag(zero, 'Z')}${flag(carry, 'C')}`
     const flags = ''
-    const disassembly = disassemble(state.pc, instruction, operandResult).padEnd(30, ' ')
+    const disassembly = disassemble(state.pc, instruction, operandResult, operand).padEnd(30, ' ')
     const registers = `A:${byte(state.a)} X:${byte(state.x)} Y:${byte(state.y)} P:${byte(getStatusByte(state.status))} SP:${byte(state.sp)}`
     
     fs.appendFileSync(LOG_FILE, 

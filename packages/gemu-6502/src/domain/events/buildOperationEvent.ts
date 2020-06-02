@@ -14,9 +14,6 @@ export const buildOperationEvent = (state: State, bus: Bus): Event<State> => {
     //TODO address mirroring - todo in bus/rangedcomponent
     //TODO implement h/w bugs
     const instruction = fetchInstruction(bus, state.pc)
-    // if (instruction.mnemonic === 'BIT') {
-    //     const x = 9
-    // }
     const operand = fetchOperand(bus, state.pc + 1, instruction.size - 1)
     const dataRegisters = (({ a, x, y }): DataRegisters => ({ a, x, y }))(state)
     const result = getAddressingMode(bus, instruction.addressingMode, operand, dataRegisters, instruction.read)

@@ -83,6 +83,9 @@
             "args": [
                 "-i"
             ],
+            "env": {
+                "TERM": "dumb"
+            },
             "internalConsoleOptions": "openOnSessionStart",
             "outFiles": [
                 "${workspaceRoot}/dist/**/*"

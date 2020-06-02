@@ -2,6 +2,7 @@ import Instruction from '../Instruction'
 import AddressingModeResult from '../AddressingModeResult'
 import { byte } from './byte'
 import { word } from './word'
+import littleEndian from '../bitwise/littleEndian'
 
 const BYTE_ADDRESSING_MODES = ['accum', 'imm', 'zp', 'zp,x', 'zp,y']
 const BRANCH_INSTRUCTIONS = ['bcc', 'bcs', 'beq', 'bmi', 'bne', 'bpl', 'bvc', 'bvs']
@@ -16,7 +17,8 @@ const getOperandString = (
     pc: number,
     addressingMode: string,
     result: AddressingModeResult,
-    branch: boolean): string => {
+    branch: boolean,
+    operand: number[]): string => {
     const am = addressingMode.toLowerCase()
 
     if (am === 'implied') {
@@ -39,18 +41,20 @@ const getOperandString = (
             return `${partialOperand},X`
         case 'abs,y':
             return `${partialOperand},Y`
+        case 'indirect':
+            return `($${word(littleEndian(operand))})`
         case '(ind,x)':
-            return `(${partialOperand},X)`
+            return `($${byte(operand[0])},X)`
         case '(ind),y':
-            return `(${partialOperand}),Y`
+            return `($${byte(operand[0])}),Y`
         case 'zp,x':
-            return `(${partialOperand},X)`
+            return `${partialOperand},X`
         case 'zp,y':
-            return `(${partialOperand}),Y`
+            return `${partialOperand},Y`
         default:
             return partialOperand
     }
 }
 
-export const disassemble = (pc: number, instruction: Instruction, result: AddressingModeResult): string =>
-    `${instruction.mnemonic.toUpperCase()} ${getOperandString(pc + instruction.size, instruction.addressingMode, result, isBranchInstruction(instruction))}`
+export const disassemble = (pc: number, instruction: Instruction, result: AddressingModeResult, operand: number[]): string =>
+    `${instruction.mnemonic.toUpperCase().substr(0, 3)} ${getOperandString(pc + instruction.size, instruction.addressingMode, result, isBranchInstruction(instruction), operand)}`

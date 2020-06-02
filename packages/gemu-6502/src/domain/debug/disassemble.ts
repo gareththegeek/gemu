@@ -33,6 +33,8 @@ const getOperandString = (
     const partialOperand = `${imm}$${number}`
 
     switch (am) {
+        case 'accum':
+            return 'A'
         case 'abs,x':
             return `${partialOperand},X`
         case 'abs,y':

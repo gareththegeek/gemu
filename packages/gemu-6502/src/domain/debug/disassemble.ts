@@ -43,6 +43,10 @@ const getOperandString = (
             return `(${partialOperand},X)`
         case '(ind),y':
             return `(${partialOperand}),Y`
+        case 'zp,x':
+            return `(${partialOperand},X)`
+        case 'zp,y':
+            return `(${partialOperand}),Y`
         default:
             return partialOperand
     }

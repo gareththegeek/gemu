@@ -27,6 +27,9 @@
   },
   "dependencies": {
     "chai": "^4.2.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "gemu-6502": "^0.1.2",
+    "gemu-memory": "^0.1.2",
+    "gemu-rom": "^0.1.2"
   }
 }

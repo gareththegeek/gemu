@@ -1,17 +1,16 @@
 import { Command, StoreFactory, Component, Bus, Range, Store } from 'gemu-interfaces'
 import { buildBus } from 'gemu-bus'
-import { buildMemory } from 'gemu-memory'
-import { buildRom } from 'gemu-rom'
+import { buildMemory, State as MemoryState } from 'gemu-memory'
+import { buildRom, State as RomState } from 'gemu-rom'
 import { buildCpu6502, State as CpuState } from 'gemu-6502'
 import { clockCommand } from './commands/clockCommand'
 import { resetCommand } from './commands/resetCommand'
-import * as MemoryState from 'gemu-memory/dist/domain/State'
 
 export default interface Nes {
     clockCommand: Command,
     resetCommand: Command,
     cpuStore: Store<CpuState>,
-    memoryStore: Store<MemoryState.default>
+    memoryStore: Store<MemoryState>
 }
 
 const attachComponentWithMirroredRanges = (bus: Bus, component: Component, ranges: Range[]): void => {
@@ -22,10 +21,10 @@ const attachComponentWithMirroredRanges = (bus: Bus, component: Component, range
 
 export const buildNes = (storeFactory: StoreFactory, romData: number[], pubsub: any): Nes => {
     const bus = buildBus(storeFactory.buildStore())
-    const cpuStore = storeFactory.buildStore<CpuState>()
+    const cpuStore = storeFactory.buildCpu6502Store<CpuState>()
     const cpu = buildCpu6502(bus, cpuStore, pubsub)
 
-    const memoryStore = storeFactory.buildStore<MemoryState.default>()
+    const memoryStore = storeFactory.buildMemoryStore<MemoryState>()
     const memory = buildMemory(memoryStore, 80)
     const memoryRanges = [
         { start: 0x0000, finish: 0x07ff },
@@ -35,7 +34,7 @@ export const buildNes = (storeFactory: StoreFactory, romData: number[], pubsub: 
     ]
     attachComponentWithMirroredRanges(bus, memory, memoryRanges)
     
-    const rom = buildRom(storeFactory.buildStore(), romData)
+    const rom = buildRom(storeFactory.buildRomStore<RomState>(), romData)
     const romRanges = [
         { start: 0x8000, finish: 0xbfff },
         { start: 0xc000, finish: 0xffff }

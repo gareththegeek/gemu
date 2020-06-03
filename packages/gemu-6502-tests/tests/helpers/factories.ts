@@ -15,8 +15,13 @@ import { buildCpu6502 } from 'gemu-6502'
 import { Bus, Range } from 'gemu-interfaces'
 import { buildMemory } from 'gemu-memory'
 import { buildRom } from 'gemu-rom'
+import { stub } from 'sinon'
 
 const PAGE_SIZE = 0x100
+
+const buildPubSub = () => ({
+    publishSync: stub()
+})
 
 const buildBusSystemComponent = (): BusSystemComponent => {
     const store = buildStore<BusState>()
@@ -29,7 +34,7 @@ const buildBusSystemComponent = (): BusSystemComponent => {
 
 const buildCpuSystemComponent = (bus: Bus): CpuSystemComponent => {
     const store = buildStore<Cpu6502State>()
-    const component = buildCpu6502(bus, store)
+    const component = buildCpu6502(bus, store, buildPubSub())
     return {
         component,
         store

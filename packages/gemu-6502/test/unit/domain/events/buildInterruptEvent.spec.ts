@@ -17,6 +17,7 @@ describe('Unit', () => {
                     zero: true,
                     irqDisable: false,
                     decimal: true,
+                    break: false,
                     overflow: false,
                     negative: true
                 }

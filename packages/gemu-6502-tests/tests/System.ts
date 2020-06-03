@@ -8,6 +8,7 @@ import { State as Cpu6502State } from 'gemu-6502'
 import * as MemoryStateUnit from 'gemu-memory/dist/domain/State'
 import * as RomStateUnit from 'gemu-rom/dist/domain/State'
 
+export { Cpu6502State }
 export type BusState = BusStateUnit.default
 export type MemoryState = MemoryStateUnit.default
 export type RomState = RomStateUnit.default

@@ -10,7 +10,7 @@ import * as buildOperationEventUnit from '../../../../src/domain/events/buildOpe
 import { Store } from 'gemu-interfaces'
 import { Bus } from 'gemu-interfaces'
 import State from '../../../../src/domain/State'
-import { build6502State, buildBus, buildStore } from '../../../helpers/factories'
+import { build6502State, buildBus, buildStore, buildPubSub } from '../../../helpers/factories'
 const expect = chai.expect
 chai.use(sinonChai)
 
@@ -54,7 +54,7 @@ describe('Unit', () => {
                 const expected = { foo: 'bar' }
                 buildWaitCycleEvent.returns(expected)
 
-                const uut = clockCommand(bus, store)
+                const uut = clockCommand(bus, store, buildPubSub())
                 uut()
 
                 expect(store.write).to.have.been.calledWith(expected)
@@ -76,7 +76,7 @@ describe('Unit', () => {
                 const expected = { foo: 'bar' }
                 buildInitialiseEvent.returns(expected)
 
-                const uut = clockCommand(bus, store)
+                const uut = clockCommand(bus, store, buildPubSub())
                 uut()
 
                 expect(store.write).to.have.been.calledWith(expected)
@@ -98,7 +98,7 @@ describe('Unit', () => {
                 const expected = { foo: 'bar' }
                 buildNmiInterruptEvent.returns(expected)
 
-                const uut = clockCommand(bus, store)
+                const uut = clockCommand(bus, store, buildPubSub())
                 uut()
 
                 expect(store.write).to.have.been.calledWith(expected)
@@ -120,7 +120,7 @@ describe('Unit', () => {
                 const expected = { foo: 'bar' }
                 buildIrqInterruptEvent.returns(expected)
 
-                const uut = clockCommand(bus, store)
+                const uut = clockCommand(bus, store, buildPubSub())
                 uut()
 
                 expect(store.write).to.have.been.calledWith(expected)
@@ -142,7 +142,7 @@ describe('Unit', () => {
                 const expected = { foo: 'bar' }
                 buildOperationEvent.returns(expected)
 
-                const uut = clockCommand(bus, store)
+                const uut = clockCommand(bus, store, buildPubSub())
                 uut()
 
                 expect(store.write).to.have.been.calledWith(expected)

@@ -9,7 +9,7 @@ const brk = (state: State, bus: Bus, _: number): Event<State> => {
     return {
         ...interruptEvent,
         status: {
-            ...interruptEvent,
+            ...interruptEvent.status,
             break: true
         }
     }

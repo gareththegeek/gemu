@@ -24,7 +24,9 @@ describe('Unit', () => {
             })
 
             it('should return the result of the addressing mode matching the requested type', () => {
-                const expected = 8
+                const expected = {
+                    parameter: 8
+                }
                 const expectedStub = sinon.stub()
                 expectedStub.returns(expected)
                 const unexpectedStub = sinon.stub()
@@ -39,7 +41,7 @@ describe('Unit', () => {
                 const registers = {} as DataRegisters
 
                 const uut = getAddressingMode
-                const actual = uut(bus, 'EXPECTED', operand, registers)
+                const actual = uut(bus, 'EXPECTED', operand, registers, true)
 
                 expect(actual).to.be.equal(expected)
                 expect(expectedStub).to.have.been.calledWith(bus, operand, registers)

@@ -3,6 +3,7 @@ import { buildStore } from 'gemu-store'
 import { loadRom } from '../helpers/loadRom'
 import { expect, assert } from 'chai'
 import * as fs from 'fs'
+import * as path from 'path'
 import * as PubSub from 'pubsub-js'
 import { serialiseState } from 'gemu-6502-disassembler/dist/serialiseState'
 
@@ -18,10 +19,12 @@ describe('NES', () => {
                         message.operand,
                         message.result)
 
-                    fs.appendFileSync('./logs/6502.log', text)
+                    const logPath = path.resolve(__dirname, '../../logs/6502.log')
+                    fs.appendFileSync(logPath, text)
                 })
 
-                const data = loadRom('./tests/roms/nestest.nes')
+                const romPath = path.resolve(__dirname, '../roms/nestest.nes')
+                const data = loadRom(romPath)
                 const system = buildNes({ buildStore }, data.ProgramData, PubSub)
                 
                 system.resetCommand()

@@ -37,7 +37,7 @@ describe('Unit', () => {
                 const actual = uut(previous, bus, 0x00)
 
                 expect(buildInterruptEvent).to.be.calledWith(previous, bus, IRQ_VECTOR, B_BRK)
-                expect(actual).to.be.equal(expected)
+                expect(actual).to.be.deep.equal(expected)
             })
         })
     })

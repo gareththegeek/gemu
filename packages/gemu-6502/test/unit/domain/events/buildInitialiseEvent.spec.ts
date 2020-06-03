@@ -19,7 +19,7 @@ describe('Unit', () => {
                 expect(actual.sp).to.be.equal(0xfd)
                 expect(actual.status.carry).to.be.false
                 expect(actual.status.decimal).to.be.false
-                expect(actual.status.irqDisable).to.be.false
+                expect(actual.status.irqDisable).to.be.true
                 expect(actual.status.negative).to.be.false
                 expect(actual.status.overflow).to.be.false
                 expect(actual.status.zero).to.be.false

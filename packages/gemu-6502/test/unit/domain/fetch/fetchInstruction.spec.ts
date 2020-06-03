@@ -3,7 +3,6 @@ import sinon = require('sinon')
 import * as chai from 'chai'
 import * as sinonChai from 'sinon-chai'
 import buildInstruction from '../../../../src/domain/fetch/buildInstruction'
-import { Bus } from 'gemu-interfaces'
 import * as instructionTableUnit from '../../../../src/domain/fetch/instructionTable'
 import { buildBus } from '../../../helpers/factories'
 chai.use(sinonChai)
@@ -25,8 +24,8 @@ describe('Unit', () => {
             })
 
             it('should return the entry from the instruction table which matches the opcode at specified address', () => {
-                const expected = buildInstruction(0x06, 'EXP', 'IMM', 1, 2)
-                const unexpected = buildInstruction(0x00, 'UNX', 'IMM', 2, 3)
+                const expected = buildInstruction(0x06, 'EXP', 'IMM', 1, 2, true)
+                const unexpected = buildInstruction(0x00, 'UNX', 'IMM', 2, 3, true)
                 const table = {
                     0x00: unexpected,
                     0x06: expected
@@ -45,8 +44,8 @@ describe('Unit', () => {
             })
 
             it('should return zero instruction if invalid opcode is located at specified adderss', () => {
-                const expected = buildInstruction(0x00, 'EXP', 'IMM', 1, 2)
-                const unexpected = buildInstruction(0x06, 'UNX', 'IMM', 2, 3)
+                const expected = buildInstruction(0x00, 'EXP', 'IMM', 1, 2, true)
+                const unexpected = buildInstruction(0x06, 'UNX', 'IMM', 2, 3, true)
                 const table = {
                     0x00: expected,
                     0x06: unexpected

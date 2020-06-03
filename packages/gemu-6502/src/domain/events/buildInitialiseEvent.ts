@@ -10,8 +10,7 @@ import State from '../State'
 export const buildInitialiseEvent = (bus: Bus): Event<State> => {
     const lo = bus.readQuery(RESET_VECTOR + 0)
     const hi = bus.readQuery(RESET_VECTOR + 1)
-    //const pc = littleEndian([lo, hi])
-    const pc = 0xc000
+    const pc = littleEndian([lo, hi])
     return {
         pc,
         a: 0,

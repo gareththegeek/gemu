@@ -12,6 +12,7 @@ describe('Integration', () => {
                 const { component } = system.cpu
                 component.resetCommand()
                 component.clockCommand()
+                system.cpu.store.write({ status: { irqDisable: false }})
                 component.clockCommand()
                 component.irqCommand()
                 component.clockCommand()
@@ -22,14 +23,14 @@ describe('Integration', () => {
 
                 let state = system.cpu.store.read()
                 expect(state.irq).to.be.true
-                expect(state.sp).to.be.equal(0xff)
+                expect(state.sp).to.be.equal(0xfd)
                 expect(state.status.irqDisable).to.be.false
 
                 component.clockCommand()
 
                 state = system.cpu.store.read()
                 expect(state.irq).to.be.false
-                expect(state.sp).to.be.equal(0xfc)
+                expect(state.sp).to.be.equal(0xfa)
                 expect(state.status.irqDisable).to.be.true
             })
         })
@@ -44,6 +45,7 @@ describe('Integration', () => {
                 const { component } = system.cpu
                 component.resetCommand()
                 component.clockCommand()
+                system.cpu.store.write({ status: { irqDisable: false }})
                 component.clockCommand()
                 component.nmiCommand()
                 component.clockCommand()
@@ -54,14 +56,14 @@ describe('Integration', () => {
 
                 let state = system.cpu.store.read()
                 expect(state.nmi).to.be.true
-                expect(state.sp).to.be.equal(0xff)
+                expect(state.sp).to.be.equal(0xfd)
                 expect(state.status.irqDisable).to.be.false
 
                 component.clockCommand()
 
                 state = system.cpu.store.read()
                 expect(state.nmi).to.be.false
-                expect(state.sp).to.be.equal(0xfc)
+                expect(state.sp).to.be.equal(0xfa)
                 expect(state.status.irqDisable).to.be.true
             })
         })

@@ -1,4 +1,5 @@
 import { expect } from 'chai'
+import * as path from 'path'
 import * as fs from 'fs'
 import { readRomQuery } from '../../src/application/queries/readRomQuery'
 
@@ -19,7 +20,8 @@ describe('Nes ROM Loader', () => {
         }]
         roms.forEach(rom => {
             it(`should successfully read rom: '${rom.filename}'`, () => {
-                const data = fs.readFileSync(`./tests/roms/${rom.filename}`)
+                const romPath = path.resolve(__dirname, `../roms/${rom.filename}`)
+                const data = fs.readFileSync(romPath)
 
                 const uut = readRomQuery()
                 const actual = uut(data)

@@ -1,17 +1,11 @@
-// import IState from '../../src/6502/state/istate'
-// import I6502 from '../../src/6502/I6502'
-// import pubSubFactory from '../../src/pubsub/factory'
-// import busFactory from '../../src/bus/factory'
-// import cpuFactory from '../../src/6502/factory'
-// import memoryFactory from '../../src/memory/factory'
-// import romFactory from '../../src/rom/factory'
-// import rangeFactory from '../../src/rangedcomponent/factory'
-// import IRangedComponent from '../../src/rangedcomponent/irangedcomponent'
-
 import State from '../../src/domain/State'
 import { SinonStubbedInstance } from 'sinon'
 import { Bus, Store } from 'gemu-interfaces'
 import sinon = require('sinon')
+
+export const buildPubSub = () => ({
+    publishSync: sinon.stub()
+})
 
 export const build6502State = (): State => ({
     pc: 1,
@@ -26,6 +20,7 @@ export const build6502State = (): State => ({
         overflow: true,
         decimal: true,
         irqDisable: true,
+        break: true,
         zero: true,
         carry: true
     },

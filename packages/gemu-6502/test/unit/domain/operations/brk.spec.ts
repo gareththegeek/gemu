@@ -27,7 +27,9 @@ describe('Unit', () => {
 
             it('should perform an interrupt with the IRQ vector and break flag set', () => {
                 const previous = build6502State()
+                previous.status.break = false
                 const expected = build6502State()
+                expected.status.break = true
                 buildInterruptEvent.returns(expected)
                 const bus = buildBus()
 

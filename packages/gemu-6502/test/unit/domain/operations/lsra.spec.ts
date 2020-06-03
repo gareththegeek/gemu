@@ -1,4 +1,4 @@
-import rol from '../../../../src/domain/operations/rol'
+import lsra from '../../../../src/domain/operations/lsra'
 import { testOperation } from '../../../helpers/6502'
 import * as chai from 'chai'
 import * as chaiSubset from 'chai-subset'
@@ -7,14 +7,14 @@ const expect = chai.expect
 
 describe('Unit', () => {
     describe('6502', () => {
-        describe('rol', () => {
-            it('should shift data left one bit with carry flag going into low bit and lost bit going into carry flag', () => {
-                const actual = testOperation(rol, {}, { carry: true }, 0xd5)
+        describe('lsra', () => {
+            it('should shift data right one bit with lost bit going into carry flag', () => {
+                const actual = testOperation(lsra, {}, {}, 0x55)
 
                 expect(actual).to.containSubset({
-                    a: 0xab,
+                    a: 0x2a,
                     status: {
-                        negative: true,
+                        negative: false,
                         zero: false,
                         carry: true
                     }

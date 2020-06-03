@@ -2,13 +2,27 @@ import { buildNes } from '../../src/application/Nes'
 import { buildStore } from 'gemu-store'
 import { loadRom } from '../helpers/loadRom'
 import { expect, assert } from 'chai'
+import * as fs from 'fs'
+import * as PubSub from 'pubsub-js'
+import { serialiseState } from 'gemu-6502-disassembler/dist/serialiseState'
 
 describe('NES', () => {
     describe('Integration', () => {
         describe('nestest.nes', () => {
             it('should pass tests', () => {
+                
+                PubSub.subscribe('OPERATION_MESSAGE', (_: string, message: any): void => {
+                    const text = serialiseState(
+                        message.state,
+                        message.instruction,
+                        message.operand,
+                        message.result)
+
+                    fs.appendFileSync('./logs/6502.log', text)
+                })
+
                 const data = loadRom('./tests/roms/nestest.nes')
-                const system = buildNes({ buildStore }, data.ProgramData)
+                const system = buildNes({ buildStore }, data.ProgramData, PubSub)
                 
                 system.resetCommand()
 

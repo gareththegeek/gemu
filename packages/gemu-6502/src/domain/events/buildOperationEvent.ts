@@ -6,18 +6,12 @@ import fetchInstruction from '../fetch/fetchInstruction'
 import fetchOperand from '../fetch/fetchOperand'
 import getAddressingMode from '../fetch/getAddressingMode'
 import getOperation from '../execute/getOperation'
-import { logState } from '../debug/logging'
 
-const DEBUG = true
-
-export const buildOperationEvent = (state: State, bus: Bus): Event<State> => {
+export const buildOperationEvent = (state: State, bus: Bus, pubsub: any): Event<State> => {
     //TODO address mirroring - todo in bus/rangedcomponent
     //TODO implement h/w bugs
     const instruction = fetchInstruction(bus, state.pc)
     const operand = fetchOperand(bus, state.pc + 1, instruction.size - 1)
-    if(instruction.opcode === 0x8d && operand[0] === 0x01 && operand[1] === 0x02) {
-        console.log('arad')
-    }
     const dataRegisters = (({ a, x, y }): DataRegisters => ({ a, x, y }))(state)
     const result = getAddressingMode(bus, instruction.addressingMode, operand, dataRegisters, instruction.read)
 
@@ -33,9 +27,12 @@ export const buildOperationEvent = (state: State, bus: Bus): Event<State> => {
         ...preExecuteEvent
     }
 
-    if (DEBUG) {
-        logState(state, instruction, operand, result)
-    }
+    pubsub.publishSync('OPERATION_MESSAGE', {
+        state,
+        instruction,
+        operand,
+        result
+    })
 
     const operation = getOperation(instruction)
     return {

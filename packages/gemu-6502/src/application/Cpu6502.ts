@@ -17,10 +17,10 @@ export default interface Cpu6502 {
     nmiCommand: Command
 }
 
-export const buildCpu6502 = (bus: Bus, store: Store<State>) => ({
+export const buildCpu6502 = (bus: Bus, store: Store<State>, pubsub: any) => ({
     stateQuery: stateQuery(store),
     resetCommand: resetCommand(store),
-    clockCommand: clockCommand(bus, store),
+    clockCommand: clockCommand(bus, store, pubsub),
     irqCommand: irqCommand(store),
     nmiCommand: nmiCommand(store)
 })

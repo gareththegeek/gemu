@@ -12,11 +12,7 @@ describe('Unit', () => {
                 const actual = testOperation(txs, { sp: 0x44, x: 0x33 }, { zero: true, negative: true }, 0x00)
 
                 expect(actual).to.containSubset({
-                    sp: 0x33,
-                    status: {
-                        negative: false,
-                        zero: false
-                    }
+                    sp: 0x33
                 })
             })
         })

@@ -7,7 +7,7 @@ import { buildNmiInterruptEvent } from '../../domain/events/buildNmiInterruptEve
 import { buildIrqInterruptEvent } from '../../domain/events/buildIrqInterruptEvent'
 import { buildOperationEvent } from '../../domain/events/buildOperationEvent'
 
-const clockCommand = (bus: Bus, store: Store<State>): Command =>
+const clockCommand = (bus: Bus, store: Store<State>, pubsub: any): Command =>
     () => {
         const state = store.read()
 
@@ -31,7 +31,7 @@ const clockCommand = (bus: Bus, store: Store<State>): Command =>
             return
         }
 
-        store.write(buildOperationEvent(state, bus))
+        store.write(buildOperationEvent(state, bus, pubsub))
     }
 
 export default clockCommand

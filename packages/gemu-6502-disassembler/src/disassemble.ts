@@ -1,8 +1,7 @@
-import Instruction from '../Instruction'
-import AddressingModeResult from '../AddressingModeResult'
+import { Instruction, AddressingModeResult } from 'gemu-6502'
 import { byte } from './byte'
 import { word } from './word'
-import littleEndian from '../bitwise/littleEndian'
+import littleEndian from 'gemu-6502/dist/domain/bitwise/littleEndian'
 
 const BYTE_ADDRESSING_MODES = ['accum', 'imm', 'zp', 'zp,x', 'zp,y']
 const BRANCH_INSTRUCTIONS = ['bcc', 'bcs', 'beq', 'bmi', 'bne', 'bpl', 'bvc', 'bvs']

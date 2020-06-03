@@ -1,0 +1,27 @@
+{
+  "name": "gemu-6502-disassembler",
+  "version": "0.1.2",
+  "description": "Disassembler for 6502 instructions within gemu",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "author": "gareththegeek",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/jest": "^25.2.3",
+    "@types/sinon": "^9.0.4",
+    "@types/sinon-chai": "^3.2.4",
+    "chai": "^4.2.0",
+    "gemu-6502": "^0.1.2",
+    "jest": "^26.0.1",
+    "sinon": "^9.0.2",
+    "sinon-chai": "^3.5.0",
+    "ts-jest": "^26.0.0",
+    "typescript": "^3.9.3"
+  }
+}

@@ -1,4 +1,4 @@
-import ror from '../../../../src/domain/operations/ror'
+import rora from '../../../../src/domain/operations/rora'
 import { testOperation } from '../../../helpers/6502'
 import * as chai from 'chai'
 import * as chaiSubset from 'chai-subset'
@@ -7,9 +7,9 @@ const expect = chai.expect
 
 describe('Unit', () => {
     describe('6502', () => {
-        describe('ror', () => {
+        describe('rora', () => {
             it('should shift data right one bit with carry flag going into high bit and lost bit going into carry flag', () => {
-                const actual = testOperation(ror, {}, { carry: true }, 0x55)
+                const actual = testOperation(rora, {}, { carry: true }, 0x55)
 
                 expect(actual).to.containSubset({
                     a: 0xaa,
@@ -22,7 +22,7 @@ describe('Unit', () => {
             })
 
             it('should shift data right one bit with unset carry flag going into high bit as zero', () => {
-                const actual = testOperation(ror, {}, { carry: false }, 0x54)
+                const actual = testOperation(rora, {}, { carry: false }, 0x54)
 
                 expect(actual).to.containSubset({
                     a: 0x2a,

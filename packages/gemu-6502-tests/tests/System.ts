@@ -4,12 +4,11 @@ import { Rom } from 'gemu-rom'
 import { Memory } from 'gemu-memory'
 import { Range } from 'gemu-interfaces'
 import * as BusStateUnit from 'gemu-bus/dist/domain/State'
-import * as Cpu6502StateUnit from 'gemu-6502/dist/domain/State'
+import { State as Cpu6502State } from 'gemu-6502'
 import * as MemoryStateUnit from 'gemu-memory/dist/domain/State'
 import * as RomStateUnit from 'gemu-rom/dist/domain/State'
 
 export type BusState = BusStateUnit.default
-export type Cpu6502State = Cpu6502StateUnit.default
 export type MemoryState = MemoryStateUnit.default
 export type RomState = RomStateUnit.default
 

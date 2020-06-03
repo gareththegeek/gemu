@@ -16,7 +16,7 @@ describe('Unit', () => {
                 expect(actual.a).to.be.equal(0)
                 expect(actual.x).to.be.equal(0)
                 expect(actual.y).to.be.equal(0)
-                expect(actual.sp).to.be.equal(0xff)
+                expect(actual.sp).to.be.equal(0xfd)
                 expect(actual.status.carry).to.be.false
                 expect(actual.status.decimal).to.be.false
                 expect(actual.status.irqDisable).to.be.false

@@ -2,16 +2,15 @@ import { Command, StoreFactory, Component, Bus, Range, Store } from 'gemu-interf
 import { buildBus } from 'gemu-bus'
 import { buildMemory } from 'gemu-memory'
 import { buildRom } from 'gemu-rom'
-import { buildCpu6502 } from 'gemu-6502'
+import { buildCpu6502, State as CpuState } from 'gemu-6502'
 import { clockCommand } from './commands/clockCommand'
 import { resetCommand } from './commands/resetCommand'
-import * as CpuState from 'gemu-6502/dist/domain/State'
 import * as MemoryState from 'gemu-memory/dist/domain/State'
 
 export default interface Nes {
     clockCommand: Command,
     resetCommand: Command,
-    cpuStore: Store<CpuState.default>,
+    cpuStore: Store<CpuState>,
     memoryStore: Store<MemoryState.default>
 }
 
@@ -21,10 +20,10 @@ const attachComponentWithMirroredRanges = (bus: Bus, component: Component, range
     })
 }
 
-export const buildNes = (storeFactory: StoreFactory, romData: number[]): Nes => {
+export const buildNes = (storeFactory: StoreFactory, romData: number[], pubsub: any): Nes => {
     const bus = buildBus(storeFactory.buildStore())
-    const cpuStore = storeFactory.buildStore<CpuState.default>()
-    const cpu = buildCpu6502(bus, cpuStore)
+    const cpuStore = storeFactory.buildStore<CpuState>()
+    const cpu = buildCpu6502(bus, cpuStore, pubsub)
 
     const memoryStore = storeFactory.buildStore<MemoryState.default>()
     const memory = buildMemory(memoryStore, 80)

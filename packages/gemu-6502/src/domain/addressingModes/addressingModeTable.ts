@@ -12,6 +12,7 @@ import zeroPageIndexedY from './zeroPageIndexedY'
 import indexedIndirect from './indexedIndirect'
 import indirectIndexed from './indirectIndexed'
 import relative from './relative'
+import indirectJmp from './indirectJmp'
 
 const ADDRESSING_MODE_TABLE: { [addressingMode: string]: AddressingMode } = {
     accum: accumulator,
@@ -21,6 +22,7 @@ const ADDRESSING_MODE_TABLE: { [addressingMode: string]: AddressingMode } = {
     abs: absolute,
     zp: zeroPage,
     indirect: indirect,
+    indirectjmp: indirectJmp,
     'abs,x': absoluteIndexedX,
     'abs,y': absoluteIndexedY,
     'zp,x': zeroPageIndexedX,

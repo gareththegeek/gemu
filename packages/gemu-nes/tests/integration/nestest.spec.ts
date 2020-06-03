@@ -16,10 +16,11 @@ describe('NES', () => {
                     system.clockCommand()
                     const cpuState = system.cpuStore.read()
                     if (cpuState.status.break) {
-                        // const mem = system.memoryStore.read()
-                        // const result = mem.pages[0].data[2] | mem.pages[0].data[3] << 8
+                        const mem = system.memoryStore.read()
+                        const result = mem.pages[0].data[2] | mem.pages[0].data[3] << 8
                         // expect(result).to.be.equal(0)
                         //return
+                        expect(result).to.be.equal(0)
                         assert.fail('Unexpected BRK statement in test')
                     }
                     // const mem = system.memoryStore.read()

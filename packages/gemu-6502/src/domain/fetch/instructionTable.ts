@@ -63,7 +63,7 @@ const INSTRUCTION_TABLE: { [opcode: number]: Instruction } = {
     0x68: buildInstruction(0x68, 'PLA', 'Implied', 1, 4, true),
     0x69: buildInstruction(0x69, 'ADC', 'IMM', 2, 2, true),
     0x6a: buildInstruction(0x6a, 'RORA', 'Accum', 1, 2, true),
-    0x6c: buildInstruction(0x6c, 'JMP', 'Indirect', 3, 5, false),
+    0x6c: buildInstruction(0x6c, 'JMP', 'IndirectJmp', 3, 5, false),
     0x6d: buildInstruction(0x6d, 'ADC', 'ABS', 3, 4, true),
     0x6e: buildInstruction(0x6e, 'ROR', 'ABS', 3, 6, false),
     0x70: buildInstruction(0x70, 'BVS', 'Relative', 2, 2, true),

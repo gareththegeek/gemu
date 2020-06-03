@@ -38,19 +38,20 @@ const getOperandString = (
         case 'accum':
             return 'A'
         case 'abs,x':
-            return `${partialOperand},X`
+            return `$${word(littleEndian(operand))},X`
         case 'abs,y':
-            return `${partialOperand},Y`
+            return `$${word(littleEndian(operand))},Y`
         case 'indirect':
+        case 'indirectjmp':
             return `($${word(littleEndian(operand))})`
         case '(ind,x)':
             return `($${byte(operand[0])},X)`
         case '(ind),y':
             return `($${byte(operand[0])}),Y`
         case 'zp,x':
-            return `${partialOperand},X`
+            return `$${byte(operand[0])},X`
         case 'zp,y':
-            return `${partialOperand},Y`
+            return `$${byte(operand[0])},Y`
         default:
             return partialOperand
     }

@@ -19,7 +19,7 @@
     "chai": "^4.2.0",
     "gemu-interfaces": "^0.1.2",
     "jest": "^26.0.1",
-    "mocha": "^7.2.0",
+    "mocha": "^10.2.0",
     "sinon": "^9.0.2",
     "sinon-chai": "^3.5.0",
     "ts-jest": "^26.0.0",
